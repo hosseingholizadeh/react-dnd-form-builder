@@ -10,6 +10,10 @@ export function getRowElements(row, elements) {
   return elements.filter((e) => e.rowId === row.key);
 }
 
+export function getColumnElements(column, elements) {
+  return elements.filter((e) => e.columnId === column.key);
+}
+
 export function generateColumn(key) {
   return { key, name: `column${key}` };
 }

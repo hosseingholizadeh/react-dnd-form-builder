@@ -11,10 +11,11 @@
 .fb-container .fb-toolbar {
   display: block;
   padding: 10px;
-  margin: 10px 0 10px 10px;
+  margin: 10px 0;
   width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 10px;
+  margin: 10px -12px;
+  border-bottom: 1px solid #ccc;
 }
 
 .fb-container .row.fb-dropzone {

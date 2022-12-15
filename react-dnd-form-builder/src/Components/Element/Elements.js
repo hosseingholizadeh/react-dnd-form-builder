@@ -11,8 +11,8 @@ import {
   Rate,
   Steps,
   Switch,
-  Tabs,
   Table,
+  Tabs,
 } from "antd";
 import React from "react";
 
@@ -74,28 +74,24 @@ const contentStyle = {
   background: "#364d79",
 };
 
-export function buttonElement(t) {
-  return (
-    <Button type="primary" class="mt-2 mb-2 ml-5 mr-5">
-      Button
-    </Button>
-  );
-}
+export const buttonElement = (t) => (
+  <Button type="primary" class="mt-2 mb-2 ml-5 mr-5">
+    Button
+  </Button>
+);
 
-export function inputElement(t) {
-  return (
-    <Input
-      style={{ width: "93.1%" }}
-      class="mt-2 mb-2 ml-5 mr-5"
-      placeholder="input text"
-      allowClear
-      size="middle"
-      enterButton
-    />
-  );
-}
+export const inputElement = (t) => (
+  <Input
+    style={{ width: "93.1%" }}
+    class="mt-2 mb-2 ml-5 mr-5"
+    placeholder="input text"
+    allowClear
+    size="middle"
+    enterButton
+  />
+);
 
-export function searchElement(t) {
+export const searchElement = (t) => {
   return (
     <Search
       style={{ width: "93.1%" }}
@@ -106,13 +102,13 @@ export function searchElement(t) {
       enterButton
     />
   );
-}
+};
 
-export function dividerElement(t) {
+export const dividerElement = (t) => {
   return <Divider />;
-}
+};
 
-export function carouselElement(t) {
+export const carouselElement = (t) => {
   return (
     <Carousel>
       <div>
@@ -123,9 +119,9 @@ export function carouselElement(t) {
       </div>
     </Carousel>
   );
-}
+};
 
-export function imageElement(t) {
+export const imageElement = (t) => {
   return (
     <Image.PreviewGroup>
       <Image
@@ -134,9 +130,9 @@ export function imageElement(t) {
       />
     </Image.PreviewGroup>
   );
-}
+};
 
-export function tabElement(t) {
+export const tabElement = (t) => {
   return (
     <Tabs class="mt-2 mb-2 ml-5 mr-5" defaultActiveKey="1">
       <TabPane tab="تب اول" key="1">
@@ -147,17 +143,17 @@ export function tabElement(t) {
       </TabPane>
     </Tabs>
   );
-}
+};
 
-export function rateElement(t) {
+export const rateElement = (t) => {
   return <Rate class="mt-2 mb-2 ml-5 mr-5" allowHalf defaultValue={0} />;
-}
+};
 
-export function switchElement(t) {
+export const switchElement = (t) => {
   return <Switch class="mt-2 mb-2 ml-5 mr-5" style={{ width: "50px" }} />;
-}
+};
 
-export function radioElement(t) {
+export const radioElement = (t) => {
   return (
     <Radio.Group>
       <Radio value={1}>1</Radio>
@@ -165,9 +161,9 @@ export function radioElement(t) {
       <Radio value={3}>3</Radio>
     </Radio.Group>
   );
-}
+};
 
-export function stepsElement(t) {
+export const stepsElement = (t) => {
   return (
     <Steps>
       <Step status="finish" title="مرحله اول" />
@@ -175,9 +171,9 @@ export function stepsElement(t) {
       <Step status="process" title="مرحله آخر" />
     </Steps>
   );
-}
+};
 
-export function progressElement(t) {
+export const progressElement = (t) => {
   return (
     <Progress
       class="mt-2 mb-2 ml-5 mr-5"
@@ -186,9 +182,9 @@ export function progressElement(t) {
       width={80}
     />
   );
-}
+};
 
-export function dropdownElement(t) {
+export const dropdownElement = (t) => {
   return (
     <Dropdown
       class="mt-2 mb-2 ml-5 mr-5"
@@ -199,11 +195,11 @@ export function dropdownElement(t) {
       <Button>Dropdown</Button>
     </Dropdown>
   );
-}
+};
 
-export function tableElement(t) {
+export const tableElement = (t) => {
   return <Table />;
-}
+};
 
 export const buttonIcon = () => (
   <ion-icon name="tablet-landscape-outline"></ion-icon>

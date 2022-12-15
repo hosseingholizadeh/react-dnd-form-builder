@@ -19,9 +19,14 @@ export default function Element({ t, name, id, addElement }) {
     }),
   }));
 
+  let iconFuncName = name + "Icon";
   return (
     <span ref={drag} class="fb-element-item" key={id}>
-      {elements[name] ? elements[name](t, name, id) : <></>}
+      {elements[iconFuncName] ? (
+        elements[iconFuncName](t, name, id)
+      ) : (
+        <ion-icon name="tablet-landscape-outline"></ion-icon>
+      )}
       <span>{t(name)}</span>
     </span>
   );
