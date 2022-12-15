@@ -5,6 +5,7 @@ import Dropzone from "./Dropzone/Dropzone";
 import { generateElement, generateRow, getRowElements } from "./FbUtils";
 import Toolbar from "./Toolbar";
 import culture from "../lib/js/culture";
+import CustomDragLayer from "./CustomDragLayer";
 
 export default function FormBuilder(props) {
   let lan = culture.getLanguage();
@@ -32,6 +33,7 @@ export default function FormBuilder(props) {
               <Toolbar t={t} setRows={setRows} tab_Add={props.tab_Add} />
             </div>
             <div class="col-12">
+              <CustomDragLayer />
               {rows.map((row) => (
                 <Dropzone
                   t={t}

@@ -1,11 +1,16 @@
 import React from "react";
-import { useDrop } from "react-dnd";
+import { useDrag, useDrop } from "react-dnd";
+import { getColumnClassName } from "../FbUtils";
 import RenderElement from "../RenderElement/RenderElement";
 import { BOX } from "../types";
-import { getColumnClassName } from "../FbUtils";
-import { Button } from "antd";
 
-export default function DropzoneColumn({ t, row, column, elements }) {
+export default function DropzoneColumn({
+  t,
+  row,
+  column,
+  elements,
+  updateElement,
+}) {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: BOX,
     drop: () => ({ row, column }),
@@ -14,6 +19,22 @@ export default function DropzoneColumn({ t, row, column, elements }) {
       canDrop: monitor.canDrop(),
     }),
   }));
+
+  const [{ isDragging }, drag] = useDrag(() => ({
+    type: BOX,
+    // item: { name: element.name },
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult();
+      if (item && dropResult) {
+        updateElement(dropResult.row, dropResult.column, item);
+      }
+    },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+      handlerId: monitor.getHandlerId(),
+    }),
+  }));
+
   const isActive = canDrop && isOver;
   return (
     <div
@@ -28,7 +49,9 @@ export default function DropzoneColumn({ t, row, column, elements }) {
             <div class="text-center pt-2 pb-2">{t("leave elements here")}</div>
           );
         } else {
-          return elements.map((el, index) => RenderElement(t, el));
+          return elements.map((el) => (
+            <div ref={drag}>{RenderElement(t, el)}</div>
+          ));
         }
       })()}
     </div>
