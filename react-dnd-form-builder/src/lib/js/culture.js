@@ -4,7 +4,7 @@ export default class culture {
   static default_language = "en";
 
   static getLanguage() {
-    return localStorage.getItem(this.language_key) ?? "en";
+    return localStorage.getItem(this.language_key) ?? this.default_language;
   }
 
   static setLanguage(lang) {
@@ -14,7 +14,7 @@ export default class culture {
 
   static isRtl(lang) {
     if (!lang) lang = this.getLanguage();
-    return lang === "fa";
+    return lang === "fa" || lang === "ar";
   }
 
   static align(lang) {
