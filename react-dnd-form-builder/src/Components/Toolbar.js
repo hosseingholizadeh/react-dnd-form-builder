@@ -8,16 +8,16 @@ export default function Toolbar({ t, setRows, tab_Add }) {
 
   return (
     <div class="fb-toolbar">
-      <Button type="primary" onClick={addRow}>
-        {t("افزودن سطر جدید")}
-      </Button>{" "}
+      <Button type="primary" style={{ margin: 3 }} onClick={addRow}>
+        {t("Add Row")}
+      </Button>
       <Button
         type="primary"
-        onClick={() => tab_Add("پیش نمایش فرم", "Preview", 1)}
+        onClick={() => tab_Add("Preview", "Preview", 1)}
         class="btn-info "
         style={{ borderRadius: 4, marginTop: 15 }}
       >
-        پیش نمایش فرم
+        Preview
       </Button>
     </div>
   );

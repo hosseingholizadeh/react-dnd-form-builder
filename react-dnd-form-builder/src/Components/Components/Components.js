@@ -17,12 +17,16 @@ export default function Components({ t, addElement }) {
       ),
     },
   ];
+
+  let tableBodyHeight = window.innerHeight;
   return (
     <div class="d-flex">
       <Table
         columns={columns}
         dataSource={Object.keys(ElementType)}
-        scroll={{ y: 800 }}
+        scroll={{ y: tableBodyHeight - 50 }}
+        pagination={false}
+        bordered={false}
       />
     </div>
   );
