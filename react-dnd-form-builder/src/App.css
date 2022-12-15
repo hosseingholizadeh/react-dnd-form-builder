@@ -1,0 +1,106 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fb-container {
+  width: 100%;
+  min-height: 800px;
+}
+
+.fb-container .fb-toolbar {
+  display: block;
+  padding: 10px;
+  margin: 10px 0 10px 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.fb-container .row.fb-dropzone {
+  height: 150px;
+  border: 1px dashed grey;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.fb-container .row.fb-dropzone > div {
+  height: 100%;
+}
+
+.fb-container .row.fb-dropzone div.hover {
+  background: #cccccc30;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.fb-container .fb-element-item {
+  width: 100%;
+  height: 35px;
+  cursor: grab;
+  border: none;
+  outline: none;
+  background: rgb(255 255 255);
+  border-radius: 8px;
+  color: #000;
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+}
+
+.fb-container .fb-element-item span {
+  width: calc(100% - 105px);
+  text-align: center;
+}
+
+.fb-container .fb-element-item ion-icon {
+  width: 100px;
+  height: 32px;
+}
+
+.fb-container .fb-element-item ion-icon[name="tablet-landscape-outline"] {
+  color: #ff4d4f;
+}
+
+.fb-container .fb-element-item ion-icon[name="grid-outline"] {
+  color: #4d50ff;
+}
