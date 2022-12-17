@@ -74,16 +74,13 @@ const contentStyle = {
   background: "#364d79",
 };
 
-export const buttonElement = (t) => (
-  <Button type="primary" class="mt-2 mb-2 ml-5 mr-5">
-    Button
-  </Button>
-);
+export function buttonElement(t, element) {
+  return <Button type="primary">Button</Button>;
+}
 
 export const inputElement = (t) => (
   <Input
     style={{ width: "93.1%" }}
-    class="mt-2 mb-2 ml-5 mr-5"
     placeholder="input text"
     allowClear
     size="middle"

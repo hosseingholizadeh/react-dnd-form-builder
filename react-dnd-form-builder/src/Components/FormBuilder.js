@@ -2,7 +2,12 @@ import i18next from "i18next";
 import React, { useState } from "react";
 import Components from "./Components/Components";
 import Dropzone from "./Dropzone/Dropzone";
-import { generateElement, generateRow, getRowElements } from "./FbUtils";
+import {
+  generateElement,
+  generateRow,
+  getRowElements,
+  updateElementRowColumn,
+} from "./FbUtils";
 import Toolbar from "./Toolbar";
 import culture from "../lib/js/culture";
 import CustomDragLayer from "./CustomDragLayer";
@@ -21,6 +26,11 @@ export default function FormBuilder(props) {
     setElements((prevElements) => [...prevElements, finalElement]);
   };
 
+  const updateElement = (row, column, element) => {
+    let newElements = updateElementRowColumn(element, row, column, elements);
+    setElements([...newElements]);
+  };
+
   return (
     <div class="card fb-container">
       <div class="row">
@@ -33,12 +43,13 @@ export default function FormBuilder(props) {
               <Toolbar t={t} setRows={setRows} tab_Add={props.tab_Add} />
             </div>
             <div class="col-12">
-              <CustomDragLayer />
+              {/* <CustomDragLayer /> */}
               {rows.map((row) => (
                 <Dropzone
                   t={t}
                   elements={getRowElements(row, elements)}
                   row={row}
+                  updateElement={updateElement}
                 />
               ))}
             </div>

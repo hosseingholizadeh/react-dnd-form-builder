@@ -20,21 +20,6 @@ export default function DropzoneColumn({
     }),
   }));
 
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: BOX,
-    // item: { name: element.name },
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult();
-      if (item && dropResult) {
-        updateElement(dropResult.row, dropResult.column, item);
-      }
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-      handlerId: monitor.getHandlerId(),
-    }),
-  }));
-
   const isActive = canDrop && isOver;
   return (
     <div
@@ -50,7 +35,7 @@ export default function DropzoneColumn({
           );
         } else {
           return elements.map((el) => (
-            <div ref={drag}>{RenderElement(t, el)}</div>
+            <RenderElement t={t} element={el} updateElement={updateElement} />
           ));
         }
       })()}

@@ -2,7 +2,7 @@ import React from "react";
 import { getColumnElements } from "../FbUtils";
 import DropzoneColumn from "./DropzoneColumn";
 
-export default function Dropzone({ t, row, elements }) {
+export default function Dropzone({ t, row, elements, updateElement }) {
   return (
     <div class="row fb-dropzone">
       {row.columns.map((column) => (
@@ -11,6 +11,7 @@ export default function Dropzone({ t, row, elements }) {
           column={column}
           elements={getColumnElements(column, elements)}
           row={row}
+          updateElement={updateElement}
         />
       ))}
     </div>
