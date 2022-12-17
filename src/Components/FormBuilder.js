@@ -1,12 +1,13 @@
 import i18next from "i18next";
 import React, { useState } from "react";
-import Components from "./Components/Components";
+import Components from "./Components";
 import Dropzone from "./Dropzone/Dropzone";
 import {
   generateElement,
   generateRow,
   getRowElements,
   updateElementRowColumn,
+  updateElementOptions,
 } from "./FbUtils";
 import Toolbar from "./Toolbar";
 import culture from "../lib/js/culture";
@@ -31,6 +32,11 @@ export default function FormBuilder(props) {
     setElements([...newElements]);
   };
 
+  const updateElementOptionData = (element, options) => {
+    let newElements = updateElementOptions(element, elements, options);
+    setElements([...newElements]);
+  };
+
   return (
     <div class="card fb-container">
       <div class="row">
@@ -47,9 +53,10 @@ export default function FormBuilder(props) {
               {rows.map((row) => (
                 <Dropzone
                   t={t}
-                  elements={getRowElements(row, elements)}
                   row={row}
+                  elements={getRowElements(row, elements)}
                   updateElement={updateElement}
+                  updateElementOptions={updateElementOptionData}
                 />
               ))}
             </div>

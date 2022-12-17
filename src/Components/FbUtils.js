@@ -33,12 +33,30 @@ export function updateElementRowColumn(element, newRow, newColumn, elements) {
   return elements;
 }
 
+export function updateElementOptions(element, elements, options) {
+  let index = getElementIndex(elements, element);
+  if (index >= 0) {
+    elements[index] = {
+      ...elements[index],
+      options: options,
+    };
+  }
+
+  return elements;
+}
+
 export function generateColumn(key) {
   return { key, name: `column${key}` };
 }
 
 export function generateElement(row, column, element) {
-  return { ...element, id: v4(), rowId: row.key, columnId: column.key };
+  return {
+    ...element,
+    id: v4(),
+    options: { style: {} },
+    rowId: row.key,
+    columnId: column.key,
+  };
 }
 
 export function getColumnClassName(row) {

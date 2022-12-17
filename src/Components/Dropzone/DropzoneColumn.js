@@ -1,5 +1,5 @@
 import React from "react";
-import { useDrag, useDrop } from "react-dnd";
+import { useDrop } from "react-dnd";
 import { getColumnClassName } from "../FbUtils";
 import RenderElement from "../RenderElement/RenderElement";
 import { BOX } from "../types";
@@ -10,6 +10,7 @@ export default function DropzoneColumn({
   column,
   elements,
   updateElement,
+  updateElementOptions,
 }) {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: BOX,
@@ -35,7 +36,12 @@ export default function DropzoneColumn({
           );
         } else {
           return elements.map((el) => (
-            <RenderElement t={t} element={el} updateElement={updateElement} />
+            <RenderElement
+              t={t}
+              element={el}
+              updateElement={updateElement}
+              updateElementOptions={updateElementOptions}
+            />
           ));
         }
       })()}

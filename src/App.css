@@ -71,3 +71,25 @@
 .fb-container .fb-element-item ion-icon[name="grid-outline"] {
   color: #4d50ff;
 }
+
+div.inputs {
+  margin-bottom: 15px;
+  border-radius: 6px;
+  padding: 25px 20px;
+  border: 1px solid rgb(238, 238, 238);
+  display: flex !important;
+  position: relative;
+}
+div.inputs .title {
+  position: absolute;
+  background: #fff;
+  top: -11px;
+  right: 15px;
+  font-weight: 600;
+  padding: 0 5px;
+}
+
+div.inputs label {
+  margin-left: 3px;
+  margin-right: 3px;
+}

@@ -16,21 +16,6 @@ import {
 } from "antd";
 import React from "react";
 
-export const ElementType = {
-  button: 1,
-  input: 2,
-  dropdown: 3,
-  progress: 4,
-  steps: 5,
-  radio: 6,
-  tab: 7,
-  switch: 8,
-  image: 9,
-  rate: 10,
-  carousel: 11,
-  divider: 12,
-  table: 13,
-};
 const { Search } = Input;
 const { TabPane } = Tabs;
 const { Step } = Steps;
@@ -74,38 +59,49 @@ const contentStyle = {
   background: "#364d79",
 };
 
-export function buttonElement(t, element) {
-  return <Button type="primary">Button</Button>;
+function renderElementStyle(style) {
+  let { backgroundColorRgb, colorRgb } = style;
+
+  return {
+    ...style,
+    color: colorRgb
+      ? `rgba(${colorRgb.r}, ${colorRgb.g}, ${colorRgb.b}, ${colorRgb.a})`
+      : undefined,
+    backgroundColor: backgroundColorRgb
+      ? `rgba(${backgroundColorRgb.r}, ${backgroundColorRgb.g}, ${backgroundColorRgb.b}, ${backgroundColorRgb.a})`
+      : undefined,
+  };
 }
 
-export const inputElement = (t) => (
-  <Input
-    style={{ width: "93.1%" }}
-    placeholder="input text"
-    allowClear
-    size="middle"
-    enterButton
-  />
-);
+export function buttonElement(t, element) {
+  let { options } = element;
+  return (
+    <Button style={renderElementStyle(options.style)} type="primary">
+      {element.title ?? t("button")}
+    </Button>
+  );
+}
 
-export const searchElement = (t) => {
+export function inputElement(t, element) {
+  return <Input placeholder="input" size="middle" />;
+}
+
+export function searchElement(t, element) {
   return (
     <Search
       style={{ width: "93.1%" }}
-      class="mt-2 mb-2 ml-5 mr-5"
       placeholder="input search text"
       allowClear
       size="middle"
-      enterButton
     />
   );
-};
+}
 
-export const dividerElement = (t) => {
+export function dividerElement(t, element) {
   return <Divider />;
-};
+}
 
-export const carouselElement = (t) => {
+export function carouselElement(t, element) {
   return (
     <Carousel>
       <div>
@@ -116,9 +112,9 @@ export const carouselElement = (t) => {
       </div>
     </Carousel>
   );
-};
+}
 
-export const imageElement = (t) => {
+export function imageElement(t, element) {
   return (
     <Image.PreviewGroup>
       <Image
@@ -127,9 +123,9 @@ export const imageElement = (t) => {
       />
     </Image.PreviewGroup>
   );
-};
+}
 
-export const tabElement = (t) => {
+export function tabElement(t, element) {
   return (
     <Tabs class="mt-2 mb-2 ml-5 mr-5" defaultActiveKey="1">
       <TabPane tab="تب اول" key="1">
@@ -140,17 +136,17 @@ export const tabElement = (t) => {
       </TabPane>
     </Tabs>
   );
-};
+}
 
-export const rateElement = (t) => {
+export function rateElement(t, element) {
   return <Rate class="mt-2 mb-2 ml-5 mr-5" allowHalf defaultValue={0} />;
-};
+}
 
-export const switchElement = (t) => {
+export function switchElement(t, element) {
   return <Switch class="mt-2 mb-2 ml-5 mr-5" style={{ width: "50px" }} />;
-};
+}
 
-export const radioElement = (t) => {
+export function radioElement(t, element) {
   return (
     <Radio.Group>
       <Radio value={1}>1</Radio>
@@ -158,9 +154,9 @@ export const radioElement = (t) => {
       <Radio value={3}>3</Radio>
     </Radio.Group>
   );
-};
+}
 
-export const stepsElement = (t) => {
+export function stepsElement(t, element) {
   return (
     <Steps>
       <Step status="finish" title="مرحله اول" />
@@ -168,9 +164,9 @@ export const stepsElement = (t) => {
       <Step status="process" title="مرحله آخر" />
     </Steps>
   );
-};
+}
 
-export const progressElement = (t) => {
+export function progressElement(t, element) {
   return (
     <Progress
       class="mt-2 mb-2 ml-5 mr-5"
@@ -179,9 +175,9 @@ export const progressElement = (t) => {
       width={80}
     />
   );
-};
+}
 
-export const dropdownElement = (t) => {
+export function dropdownElement(t, element) {
   return (
     <Dropdown
       class="mt-2 mb-2 ml-5 mr-5"
@@ -192,11 +188,11 @@ export const dropdownElement = (t) => {
       <Button>Dropdown</Button>
     </Dropdown>
   );
-};
+}
 
-export const tableElement = (t) => {
+export function tableElement(t, element) {
   return <Table />;
-};
+}
 
 export const buttonIcon = () => (
   <ion-icon name="tablet-landscape-outline"></ion-icon>

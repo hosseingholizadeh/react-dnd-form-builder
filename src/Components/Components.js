@@ -1,6 +1,6 @@
 import React from "react";
-import Element from "../Element/Element";
-import { ElementType } from "../Element/Elements";
+import Element from "./Element/Element";
+import { ElementType } from "./Element/ElementType";
 import { Table } from "antd";
 
 export default function Components({ t, addElement }) {
@@ -11,7 +11,7 @@ export default function Components({ t, addElement }) {
         <Element
           t={t}
           name={key}
-          id={ElementType[key]}
+          id={ElementType[key].value}
           addElement={addElement}
         />
       ),
