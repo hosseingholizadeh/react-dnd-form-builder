@@ -1,6 +1,7 @@
 import {
   Button,
   Carousel,
+  Checkbox,
   Divider,
   Dropdown,
   Image,
@@ -154,6 +155,13 @@ export function radioElement(t, element) {
       <Radio value={3}>3</Radio>
     </Radio.Group>
   );
+}
+
+export function checkboxElement(t, element) {
+  const plainOptions = ["Apple", "Pear", "Orange"];
+  const defaultCheckedList = ["Apple", "Orange"];
+
+  return <Checkbox.Group options={plainOptions} value={defaultCheckedList} />;
 }
 
 export function stepsElement(t, element) {
