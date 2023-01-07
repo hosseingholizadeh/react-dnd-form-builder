@@ -61,7 +61,7 @@ const contentStyle = {
 };
 
 function renderElementStyle(style) {
-  let { backgroundColorRgb, colorRgb } = style;
+  let { backgroundColorRgb, colorRgb } = style ?? {};
 
   return {
     ...style,
@@ -77,7 +77,7 @@ function renderElementStyle(style) {
 export function buttonElement(t, element) {
   let { options } = element;
   return (
-    <Button style={renderElementStyle(options.style)} type="primary">
+    <Button style={renderElementStyle(options?.style)} type="primary">
       {element.title ?? t("button")}
     </Button>
   );
@@ -128,7 +128,7 @@ export function imageElement(t, element) {
 
 export function tabElement(t, element) {
   return (
-    <Tabs class="mt-2 mb-2 ml-5 mr-5" defaultActiveKey="1">
+    <Tabs defaultActiveKey="1">
       <TabPane tab="تب اول" key="1">
         توضیحات تب اول
       </TabPane>
@@ -140,11 +140,11 @@ export function tabElement(t, element) {
 }
 
 export function rateElement(t, element) {
-  return <Rate class="mt-2 mb-2 ml-5 mr-5" allowHalf defaultValue={0} />;
+  return <Rate allowHalf defaultValue={0} />;
 }
 
 export function switchElement(t, element) {
-  return <Switch class="mt-2 mb-2 ml-5 mr-5" style={{ width: "50px" }} />;
+  return <Switch style={{ width: "50px" }} />;
 }
 
 export function radioElement(t, element) {
@@ -175,24 +175,12 @@ export function stepsElement(t, element) {
 }
 
 export function progressElement(t, element) {
-  return (
-    <Progress
-      class="mt-2 mb-2 ml-5 mr-5"
-      type="circle"
-      percent={100}
-      width={80}
-    />
-  );
+  return <Progress type="circle" percent={100} width={80} />;
 }
 
 export function dropdownElement(t, element) {
   return (
-    <Dropdown
-      class="mt-2 mb-2 ml-5 mr-5"
-      overlay={menu}
-      placement="bottomCenter"
-      arrow
-    >
+    <Dropdown overlay={menu} placement="bottomCenter" arrow>
       <Button>Dropdown</Button>
     </Dropdown>
   );

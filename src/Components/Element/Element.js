@@ -6,13 +6,14 @@ import * as elements from "./Elements";
 export default function Element({ t, name, id, addElement }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: BOX,
-    item: { name },
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult();
-      if (item && dropResult) {
-        addElement(dropResult.row, dropResult.column, item);
-      }
-    },
+    item: { name, type: BOX, id, left: 5, top: 5 },
+    // end: (item, monitor) => {
+    //   const dropResult = monitor.getDropResult();
+    //   monitor.getInitialSourceClientOffset();
+    //   if (item && dropResult) {
+    //    // addElement(item);
+    //   }
+    // },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
       handlerId: monitor.getHandlerId(),

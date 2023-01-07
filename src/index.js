@@ -6,7 +6,10 @@ import reportWebVitals from "./reportWebVitals";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const rootElement = document.getElementById("root");
+if (!rootElement) throw new Error('Failed to find the root element');
+const root = ReactDOM.createRoot(rootElement);
+
 root.render(
   <DndProvider backend={HTML5Backend}>
     <App />

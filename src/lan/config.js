@@ -11,7 +11,7 @@ const getAllJsonFiles = (lng) => {
   msList.forEach((ms) => {
     const fileName = `${ms}.json`;
     try {
-      const resource = require(`./lan/${lng}/${fileName}`);
+      const resource = require(`./locales/${lng}/${fileName}`);
       let data = JSON.parse(JSON.stringify(resource));
       all = { ...all, ...data };
     } catch (e) {

@@ -93,3 +93,29 @@ div.inputs label {
   margin-left: 3px;
   margin-right: 3px;
 }
+
+/*=============*/
+.dragcontainer {
+  width: 100%;
+  height: 700px;
+  border: 1px solid black;
+  position: relative;
+}
+
+.dragitem {
+  display: inline-block;
+}
+
+.dragitem:hover {
+  cursor: pointer;
+}
+
+.draglayer {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

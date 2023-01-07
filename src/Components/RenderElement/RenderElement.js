@@ -1,45 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
 import * as elements from "../Element/Elements";
 import { BOX } from "../types";
 import ElementOptionsModal from "../Element/ElementOptions/ElementOptionsModal.jsx";
+import { getEmptyImage } from "react-dnd-html5-backend";
 
-export default function RenderElement({
-  t,
-  element,
-  updateElement,
-  updateElementOptions,
-}) {
+function getDraggableBoxStyles(left, top, isDragging) {
+  const transform = `translate3d(${left}px, ${top}px, 0)`;
+  return {
+    position: "absolute",
+    transform,
+    WebkitTransform: transform,
+    // IE fallback: hide the real node using CSS when dragging
+    // because IE will ignore our custom "empty image" drag preview.
+    opacity: isDragging ? 0 : 1,
+    width: "fit-Content",
+    height: isDragging ? 0 : "",
+  };
+}
+
+export default function RenderElement({ t, element, updateElementOptions }) {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const { name, left, top, id } = element;
+  const [{ isDragging }, drag, preview] = useDrag({
     type: BOX,
-    item: element,
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult();
-      if (item && dropResult) {
-        updateElement(dropResult.row, dropResult.column, item);
-      }
-    },
+    item: { type: BOX, id, left, top, name },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
-      handlerId: monitor.getHandlerId(),
     }),
-  }));
+  });
+
+  useEffect(() => {
+    preview(getEmptyImage(), { captureDraggingState: true });
+  }, [preview]);
 
   const openOptionsModal = () => setOptionsModalVisible(true);
   const closeOptionsModal = () => setOptionsModalVisible(false);
   const saveElementOptions = (options) => {
-    console.log(options);
     updateElementOptions(element, options);
   };
 
   let elName = element.name + "Element";
   return (
     <div
+      className="dragitem"
       ref={drag}
       onDoubleClick={openOptionsModal}
-      style={{ width: "fit-Content" }}
+      style={getDraggableBoxStyles(left, top, isDragging)}
     >
       <ElementOptionsModal
         t={t}

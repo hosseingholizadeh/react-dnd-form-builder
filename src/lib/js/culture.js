@@ -1,7 +1,7 @@
 export default class culture {
   static language_key = "lang";
   static languages = ["en", "fa", "tr"];
-  static default_language = "en";
+  static default_language = "fa";
 
   static getLanguage() {
     return localStorage.getItem(this.language_key) ?? this.default_language;

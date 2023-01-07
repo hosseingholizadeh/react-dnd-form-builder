@@ -20,13 +20,12 @@ export function getColumnElements(column, elements) {
   return elements.filter((e) => e.columnId === column.key);
 }
 
-export function updateElementRowColumn(element, newRow, newColumn, elements) {
+export function updateElementRowColumn(element, elements) {
+  return false;
   let index = getElementIndex(elements, element);
   if (index >= 0) {
     elements[index] = {
       ...elements[index],
-      rowId: newRow.key,
-      columnId: newColumn.key,
     };
   }
 
@@ -34,6 +33,7 @@ export function updateElementRowColumn(element, newRow, newColumn, elements) {
 }
 
 export function updateElementOptions(element, elements, options) {
+  return false;
   let index = getElementIndex(elements, element);
   if (index >= 0) {
     elements[index] = {
@@ -49,13 +49,11 @@ export function generateColumn(key) {
   return { key, name: `column${key}` };
 }
 
-export function generateElement(row, column, element) {
+export function generateElement(element) {
   return {
     ...element,
     id: v4(),
     options: { style: {} },
-    rowId: row.key,
-    columnId: column.key,
   };
 }
 
