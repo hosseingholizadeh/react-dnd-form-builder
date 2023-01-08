@@ -1,6 +1,6 @@
 import { Input, Space } from "antd";
-import React, { useEffect, useState } from "react";
-import ColorPicker from "../../lib/ColorPicker";
+import React from "react";
+import ColorPicker from "../../../lib/js/ColorPicker";
 
 export default function BaseElementOptions({ t, style, setOptions }) {
   const onChangeStyle = (option, value) => {
