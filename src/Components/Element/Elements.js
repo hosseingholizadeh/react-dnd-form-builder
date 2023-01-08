@@ -231,7 +231,6 @@ export function dropdownElement(t, element) {
 
 export function tableElement(t, element) {
   let { options } = element;
-  return <button>hi</button>;
   return <Table bordered style={renderElementStyle(options?.style)} />;
 }
 
