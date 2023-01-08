@@ -84,6 +84,10 @@ export function DragLayerContainer({
     }
   };
 
+  const onClickInsideDragContainer = (e) => {
+    if (e.target.id === "dragContainer") setSelectedItem(null);
+  };
+
   return (
     <>
       <div
@@ -91,7 +95,8 @@ export function DragLayerContainer({
         className="dragcontainer"
         id="dragContainer"
         tabIndex={0}
-        onKeyDown={(e) => onKeyDownInsideDragContainer(e)}
+        onClick={onClickInsideDragContainer}
+        onKeyDown={onKeyDownInsideDragContainer}
       >
         {Object.keys(elements).map((key) => {
           return (

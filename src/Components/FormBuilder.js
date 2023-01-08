@@ -4,7 +4,7 @@ import culture from "../lib/js/culture";
 import Components from "./Components";
 import { DragLayer } from "./DragLayer/DragLayer";
 import { DragLayerContainer } from "./DragLayer/DragLayerContainer";
-import { generateElement, generateRow } from "./FbUtils";
+import { generateElement } from "./FbUtils";
 import Toolbar from "./Toolbar";
 
 export default function FormBuilder(props) {
@@ -13,9 +13,6 @@ export default function FormBuilder(props) {
 
   const [elements, setElements] = useState({});
   const [cache, setElementOnCache] = useState([]);
-
-  const defaultRows = [generateRow(1, 1)];
-  const [rows, setRows] = useState(defaultRows);
 
   const addElement = (element) => {
     let finalElement = generateElement(element);
@@ -68,7 +65,7 @@ export default function FormBuilder(props) {
         <div class="col-10">
           <div class="row">
             <div class="col-12">
-              <Toolbar t={t} setRows={setRows} tab_Add={props.tab_Add} />
+              <Toolbar t={t} tab_Add={props.tab_Add} />
             </div>
             <div class="col-12">
               <DragLayerContainer
