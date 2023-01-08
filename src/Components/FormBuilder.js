@@ -12,6 +12,7 @@ export default function FormBuilder(props) {
   let t = i18next.getFixedT(lan);
 
   const [elements, setElements] = useState({});
+  const [cache, setElementOnCache] = useState([]);
 
   const defaultRows = [generateRow(1, 1)];
   const [rows, setRows] = useState(defaultRows);
@@ -31,11 +32,31 @@ export default function FormBuilder(props) {
     }));
   };
 
+  const removeElement = (element) => {
+    let id = element.id;
+    delete elements[id];
+    if (cache.findIndex((x) => x.id === id) === -1) {
+      setElementOnCache((prevElements) => [...prevElements, element]);
+    }
+    setElements({ ...elements });
+  };
+
   const updateElementOptionData = (element, options) => {
-    setElements((prevElements) => ({
-      ...prevElements,
-      [element.id]: { ...element, options: options },
-    }));
+    let id = element.id;
+    elements[id] = { ...element, options };
+    setElements({ ...elements });
+  };
+
+  const undoRemove = () => {
+    let last = cache.pop();
+    if (last) {
+      setElementOnCache([...cache]);
+
+      setElements((prevElements) => ({
+        ...prevElements,
+        [last.id]: last,
+      }));
+    }
   };
 
   return (
@@ -52,22 +73,15 @@ export default function FormBuilder(props) {
             <div class="col-12">
               <DragLayerContainer
                 t={t}
-                elements={Object.assign({}, elements ?? [])}
+                elements={elements}
                 addElement={addElement}
                 setElements={setElements}
+                removeElement={removeElement}
                 updateElement={updateElement}
                 updateElementOptions={updateElementOptionData}
+                undoRemove={undoRemove}
               />
-              <DragLayer />
-              {/* {rows.map((row) => (
-                <Dropzone
-                  t={t}
-                  row={row}
-                  elements={getRowElements(row, elements)}
-                  updateElement={updateElement}
-                  updateElementOptions={updateElementOptionData}
-                />
-              ))} */}
+              <DragLayer t={t} />
             </div>
           </div>
         </div>

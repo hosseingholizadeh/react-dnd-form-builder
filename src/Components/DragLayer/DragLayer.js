@@ -1,6 +1,7 @@
 import React from "react";
 import { useDragLayer } from "react-dnd";
 import { BOX } from "../types";
+import * as elements from "../Element/Elements";
 
 function getDragLayerStyles(initialOffset, currentOffset) {
   if (!initialOffset || !currentOffset) {
@@ -15,10 +16,11 @@ function getDragLayerStyles(initialOffset, currentOffset) {
   return {
     transform,
     WebkitTransform: transform,
+    width: "fit-content",
   };
 }
 
-export function DragLayer({}) {
+export function DragLayer({ t }) {
   const { itemType, isDragging, item, initialOffset, currentOffset } =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),
@@ -29,15 +31,13 @@ export function DragLayer({}) {
     }));
 
   const renderItem = () => {
+    let elName = item.name + "Element";
     switch (itemType) {
       case BOX:
-        return (
-          <div
-            className="dragitem"
-            style={{ backgroundColor: "blue", color: "#fff" }}
-          >
-            {item.name}
-          </div>
+        return elements[elName] ? (
+          elements[elName](t, item)
+        ) : (
+          <span>{elName}</span>
         );
       default:
         return null;

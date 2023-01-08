@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useDrop } from "react-dnd";
 import RenderElement from "../RenderElement/RenderElement";
 import { BOX } from "../types";
@@ -7,9 +7,13 @@ export function DragLayerContainer({
   t,
   elements,
   addElement,
+  removeElement,
   updateElement,
   updateElementOptions,
+  undoRemove,
 }) {
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const addBox = useCallback(
     (el, left, top) => {
       addElement({ ...el, left, top });
@@ -27,10 +31,27 @@ export function DragLayerContainer({
     accept: BOX,
     drop(item, monitor) {
       if (!elements[item.id]) {
-        const delta = monitor.getClientOffset();
+        // console.log(
+        //   "getInitialClientOffset: ",
+        //   monitor.getInitialClientOffset()
+        // );
+        // console.log(
+        //   "getDifferenceFromInitialOffset: ",
+        //   monitor.getDifferenceFromInitialOffset()
+        // );
+        // console.log(
+        //   "getInitialSourceClientOffset: ",
+        //   monitor.getInitialSourceClientOffset()
+        // );
+        // console.log("getSourceClientOffset: ", monitor.getSourceClientOffset());
+        // console.log("getClientOffset: ", monitor.getClientOffset());
 
-        let left = Math.round(delta.x);
-        let top = Math.round(delta.y);
+        const delta = monitor.getClientOffset();
+        console.log(delta);
+        const left = Math.round(delta.x - 50);
+        const top = Math.round(delta.y + 15);
+        // let left = Math.round(item.left + delta.x);
+        // let top = Math.round(item.top + delta.y);
         addBox(item, left, top);
       } else {
         const delta = monitor.getDifferenceFromInitialOffset();
@@ -47,15 +68,40 @@ export function DragLayerContainer({
     }),
   });
 
+  const onKeyDownInsideDragContainer = (e) => {
+    let { key, ctrlKey } = e;
+    switch (key) {
+      case "Delete":
+        if (selectedItem) removeElement(selectedItem);
+        break;
+      case "z":
+      case "Z":
+        if (ctrlKey) undoRemove();
+        break;
+
+      default:
+        break;
+    }
+  };
+
   return (
     <>
-      <div ref={drop} className="dragcontainer">
+      <div
+        ref={drop}
+        className="dragcontainer"
+        id="dragContainer"
+        tabIndex={0}
+        onKeyDown={(e) => onKeyDownInsideDragContainer(e)}
+      >
         {Object.keys(elements).map((key) => {
           return (
             <RenderElement
               t={t}
               id={key}
               element={elements[key]}
+              isSelected={selectedItem && selectedItem.id === key}
+              setSelectedItem={setSelectedItem}
+              removeElement={removeElement}
               updateElement={updateElement}
               updateElementOptions={updateElementOptions}
             />

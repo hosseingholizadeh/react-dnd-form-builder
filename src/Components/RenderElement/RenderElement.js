@@ -19,13 +19,19 @@ function getDraggableBoxStyles(left, top, isDragging) {
   };
 }
 
-export default function RenderElement({ t, element, updateElementOptions }) {
+export default function RenderElement({
+  t,
+  element,
+  updateElementOptions,
+  setSelectedItem,
+  isSelected,
+}) {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
-  const { name, left, top, id } = element;
+  const { name, left, top, id, options } = element;
   const [{ isDragging }, drag, preview] = useDrag({
     type: BOX,
-    item: { type: BOX, id, left, top, name },
+    item: { type: BOX, id, left, top, name, options },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
@@ -44,8 +50,9 @@ export default function RenderElement({ t, element, updateElementOptions }) {
   let elName = element.name + "Element";
   return (
     <div
-      className="dragitem"
+      className={"dragitem" + (isSelected ? " selected" : "")}
       ref={drag}
+      onClick={() => (setSelectedItem ? setSelectedItem(element) : false)}
       onDoubleClick={openOptionsModal}
       style={getDraggableBoxStyles(left, top, isDragging)}
     >

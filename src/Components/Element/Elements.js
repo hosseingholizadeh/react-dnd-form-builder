@@ -84,13 +84,21 @@ export function buttonElement(t, element) {
 }
 
 export function inputElement(t, element) {
-  return <Input placeholder="input" size="middle" />;
+  let { options } = element;
+  return (
+    <Input
+      style={renderElementStyle(options?.style)}
+      placeholder="input"
+      size="middle"
+    />
+  );
 }
 
 export function searchElement(t, element) {
+  let { options } = element;
   return (
     <Search
-      style={{ width: "93.1%" }}
+      style={renderElementStyle(options?.style)}
       placeholder="input search text"
       allowClear
       size="middle"
@@ -99,12 +107,14 @@ export function searchElement(t, element) {
 }
 
 export function dividerElement(t, element) {
-  return <Divider />;
+  let { options } = element;
+  return <Divider style={renderElementStyle(options?.style)} />;
 }
 
 export function carouselElement(t, element) {
+  let { options } = element;
   return (
-    <Carousel>
+    <Carousel style={renderElementStyle(options?.style)}>
       <div>
         <h3 style={contentStyle}>1</h3>
       </div>
@@ -116,8 +126,9 @@ export function carouselElement(t, element) {
 }
 
 export function imageElement(t, element) {
+  let { options } = element;
   return (
-    <Image.PreviewGroup>
+    <Image.PreviewGroup style={renderElementStyle(options?.style)}>
       <Image
         width={200}
         src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
@@ -127,8 +138,9 @@ export function imageElement(t, element) {
 }
 
 export function tabElement(t, element) {
+  let { options } = element;
   return (
-    <Tabs defaultActiveKey="1">
+    <Tabs defaultActiveKey="1" style={renderElementStyle(options?.style)}>
       <TabPane tab="تب اول" key="1">
         توضیحات تب اول
       </TabPane>
@@ -140,16 +152,25 @@ export function tabElement(t, element) {
 }
 
 export function rateElement(t, element) {
-  return <Rate allowHalf defaultValue={0} />;
+  let { options } = element;
+  return (
+    <Rate
+      style={renderElementStyle(options?.style)}
+      allowHalf
+      defaultValue={0}
+    />
+  );
 }
 
 export function switchElement(t, element) {
-  return <Switch style={{ width: "50px" }} />;
+  let { options } = element;
+  return <Switch style={renderElementStyle(options?.style)} />;
 }
 
 export function radioElement(t, element) {
+  let { options } = element;
   return (
-    <Radio.Group>
+    <Radio.Group style={renderElementStyle(options?.style)}>
       <Radio value={1}>1</Radio>
       <Radio value={2}>2</Radio>
       <Radio value={3}>3</Radio>
@@ -158,15 +179,23 @@ export function radioElement(t, element) {
 }
 
 export function checkboxElement(t, element) {
+  let { options } = element;
   const plainOptions = ["Apple", "Pear", "Orange"];
   const defaultCheckedList = ["Apple", "Orange"];
 
-  return <Checkbox.Group options={plainOptions} value={defaultCheckedList} />;
+  return (
+    <Checkbox.Group
+      style={renderElementStyle(options?.style)}
+      options={plainOptions}
+      value={defaultCheckedList}
+    />
+  );
 }
 
 export function stepsElement(t, element) {
+  let { options } = element;
   return (
-    <Steps>
+    <Steps style={renderElementStyle(options?.style)}>
       <Step status="finish" title="مرحله اول" />
       <Step status="finish" title="مرحله دوم" />
       <Step status="process" title="مرحله آخر" />
@@ -175,19 +204,35 @@ export function stepsElement(t, element) {
 }
 
 export function progressElement(t, element) {
-  return <Progress type="circle" percent={100} width={80} />;
+  let { options } = element;
+  return (
+    <Progress
+      style={renderElementStyle(options?.style)}
+      type="circle"
+      percent={100}
+      width={80}
+    />
+  );
 }
 
 export function dropdownElement(t, element) {
+  let { options } = element;
   return (
-    <Dropdown overlay={menu} placement="bottomCenter" arrow>
+    <Dropdown
+      style={renderElementStyle(options?.style)}
+      overlay={menu}
+      placement="bottomCenter"
+      arrow
+    >
       <Button>Dropdown</Button>
     </Dropdown>
   );
 }
 
 export function tableElement(t, element) {
-  return <Table />;
+  let { options } = element;
+  return <button>hi</button>;
+  return <Table bordered style={renderElementStyle(options?.style)} />;
 }
 
 export const buttonIcon = () => (

@@ -109,7 +109,9 @@ div.inputs label {
 .dragitem:hover {
   cursor: pointer;
 }
-
+.dragitem.selected {
+  border: 1px solid #999;
+}
 .draglayer {
   position: fixed;
   pointer-events: none;
