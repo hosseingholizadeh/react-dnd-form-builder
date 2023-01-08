@@ -5,6 +5,7 @@ import Components from "./Components";
 import { DragLayer } from "./DragLayer/DragLayer";
 import { DragLayerContainer } from "./DragLayer/DragLayerContainer";
 import { generateElement } from "./FbUtils";
+import PreviewForm from "./PreviewForm";
 import Toolbar from "./Toolbar";
 
 export default function FormBuilder(props) {
@@ -13,6 +14,10 @@ export default function FormBuilder(props) {
 
   const [elements, setElements] = useState({});
   const [cache, setElementOnCache] = useState([]);
+  const [previewVisible, setPreviewVisible] = useState(false);
+
+  const openPreview = () => setPreviewVisible(true);
+  const closePreview = () => setPreviewVisible(false);
 
   const addElement = (element) => {
     let finalElement = generateElement(element);
@@ -65,7 +70,7 @@ export default function FormBuilder(props) {
         <div class="col-10">
           <div class="row">
             <div class="col-12">
-              <Toolbar t={t} tab_Add={props.tab_Add} />
+              <Toolbar t={t} openPreview={openPreview} />
             </div>
             <div class="col-12">
               <DragLayerContainer
@@ -79,6 +84,12 @@ export default function FormBuilder(props) {
                 undoRemove={undoRemove}
               />
               <DragLayer t={t} />
+              <PreviewForm
+                t={t}
+                close={closePreview}
+                elements={elements}
+                visible={previewVisible}
+              />
             </div>
           </div>
         </div>

@@ -26,5 +26,6 @@
   "carousel": "اسلایدر",
   "divider": "جدا کننده",
   "table": "جدول",
-  "optionModalTitle": "تنظیمات {{name}}"
+  "optionModalTitle": "تنظیمات {{name}}",
+  "preview": "پیش نمایش"
 }

@@ -15,5 +15,6 @@
   "close": "Close",
   "select": "Select",
   "search": "Search",
-  "optionModalTitle": "options {{name}}"
+  "optionModalTitle": "options {{name}}",
+  "preview": "preview"
 }
