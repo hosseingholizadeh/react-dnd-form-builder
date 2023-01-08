@@ -1,7 +1,7 @@
 import { Button } from "antd";
-import { renderStyle } from "../PreviewUtils";
+import { renderStyle } from "../RenderUtils";
 
-export default function PreviewButton({ t, element }) {
+export default function RenderButton({ t, element }) {
   console.log(element);
   let { options, name, left, top } = element;
   let { style } = options ?? {};

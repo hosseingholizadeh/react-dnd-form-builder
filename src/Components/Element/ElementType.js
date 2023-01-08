@@ -1,146 +1,232 @@
 import React from "react";
-import ButtonOptions from "./ElementOptions/ButtonOptions";
-import InputOptions from "./ElementOptions/InputOptions";
-import CheckboxOptions from "./ElementOptions/CheckboxOptions";
-import RadioOptions from "./ElementOptions/RadioOptions";
-import TableOptions from "./ElementOptions/TableOptions";
-import ProgressBarOptions from "./ElementOptions/ProgressBarOptions";
-import ImageOptions from "./ElementOptions/DropdownOptions";
-import SwitchOptions from "./ElementOptions/SwitchOptions";
-import DropdownOptions from "./ElementOptions/DropdownOptions";
-import DividerOptions from "./ElementOptions/DividerOptions";
-import CarouselOptions from "./ElementOptions/CarouselOptions";
-import StepsOptions from "./ElementOptions/StepsOptions";
-import TabsOptions from "./ElementOptions/TabsOptions";
-import RateOptions from "./ElementOptions/RateOptions";
-import DatePickerOptions from "./ElementOptions/DatePickerOptions";
 
-import PreviewButton from "../Preview/Elements/PreviewButton";
-import PreviewDropDown from "../Preview/Elements/PreviewDropDown";
-import PreviewInput from "../Preview/Elements/PreviewInput";
-import PreviewRadio from "../Preview/Elements/PreviewRadio";
-import PreviewCheckbox from "../Preview/Elements/PreviewCheckbox";
-import PreviewSwitch from "../Preview/Elements/PreviewSwitch";
-import PreviewImage from "../Preview/Elements/PreviewImage";
-import PreviewRate from "../Preview/Elements/PreviewRate";
-import PreviewCarousel from "../Preview/Elements/PreviewCarousel";
-import PreviewDivider from "../Preview/Elements/PreviewDivider";
-import PreviewTable from "../Preview/Elements/PreviewTable";
-import PreviewDatePicker from "../Preview/Elements/PreviewDatePicker";
-import PreviewTab from "../Preview/Elements/PreviewTab";
-import PreviewProgress from "../Preview/Elements/PreviewProgress";
+import { RenderComponents } from "./Elements/index";
+import { ElementOptions } from "./ElementOptions/index";
 
 export const ElementType = {
   button: {
     value: 1,
     hasDataSource: false,
+    icon: "tablet-landscape-outline",
     optionsComponent: (t, options, setOptions) => (
-      <ButtonOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.ButtonOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewButton t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderButton t={t} element={element} />
+    ),
   },
   input: {
     value: 2,
+    hasDataSource: false,
+    icon: "create-outline",
     optionsComponent: (t, options, setOptions) => (
-      <InputOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.InputOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewInput t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderInput t={t} element={element} />
+    ),
   },
   dropdown: {
     value: 3,
     hasDataSource: true,
+    icon: "list-outline",
     optionsComponent: (t, options, setOptions) => (
-      <DropdownOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.DropdownOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewDropDown t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderDropDown t={t} element={element} />
+    ),
   },
   progress: {
     value: 4,
+    hasDataSource: false,
+    icon: "reload-outline",
     optionsComponent: (t, options, setOptions) => (
-      <ProgressBarOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.ProgressBarOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewProgress t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderProgress t={t} element={element} />
+    ),
   },
   steps: {
     value: 5,
     hasDataSource: true,
+    icon: "analytics-outline",
     optionsComponent: (t, options, setOptions) => (
-      <StepsOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.StepsOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewButton t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderButton t={t} element={element} />
+    ),
   },
   radio: {
     value: 6,
     hasDataSource: true,
+    icon: "radio-button-on-outline",
     optionsComponent: (t, options, setOptions) => (
-      <RadioOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.RadioOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewRadio t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderRadio t={t} element={element} />
+    ),
   },
   checkbox: {
     value: 7,
     hasDataSource: true,
+    icon: "checkbox-outline",
     optionsComponent: (t, options, setOptions) => (
-      <CheckboxOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.CheckboxOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewCheckbox t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderCheckbox t={t} element={element} />
+    ),
   },
   tab: {
     value: 8,
     hasDataSource: true,
+    icon: "apps-outline",
     optionsComponent: (t, options, setOptions) => (
-      <TabsOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.TabsOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewTab t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderTab t={t} element={element} />
+    ),
   },
   switch: {
     value: 9,
+    hasDataSource: false,
+    icon: "toggle-outline",
     optionsComponent: (t, options, setOptions) => (
-      <SwitchOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.SwitchOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewSwitch t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderSwitch t={t} element={element} />
+    ),
   },
   image: {
     value: 10,
+    hasDataSource: false,
+    icon: "image-outline",
     optionsComponent: (t, options, setOptions) => (
-      <ImageOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.ImageOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewImage t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderImage t={t} element={element} />
+    ),
   },
   rate: {
     value: 11,
+    hasDataSource: false,
+    icon: "star-half-outline",
     optionsComponent: (t, options, setOptions) => (
-      <RateOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.RateOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewRate t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderRate t={t} element={element} />
+    ),
   },
   carousel: {
     value: 12,
+    hasDataSource: false,
+    icon: "caret-forward-circle-outline",
     optionsComponent: (t, options, setOptions) => (
-      <CarouselOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.CarouselOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewCarousel t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderCarousel t={t} element={element} />
+    ),
   },
   divider: {
     value: 13,
+    hasDataSource: false,
+    icon: "remove-outline",
     optionsComponent: (t, options, setOptions) => (
-      <DividerOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.DividerOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewDivider t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderDivider t={t} element={element} />
+    ),
   },
   table: {
     value: 14,
     hasDataSource: true,
+    icon: "grid-outline",
     optionsComponent: (t, options, setOptions) => (
-      <TableOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.TableOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewTable t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderTable t={t} element={element} />
+    ),
   },
   datepicker: {
     value: 15,
+    hasDataSource: false,
+    icon: "today-outline",
     optionsComponent: (t, options, setOptions) => (
-      <DatePickerOptions t={t} options={options} setOptions={setOptions} />
+      <ElementOptions.DatePickerOptions
+        t={t}
+        options={options}
+        setOptions={setOptions}
+      />
     ),
-    preview: (t, element) => <PreviewDatePicker t={t} element={element} />,
+    render: (t, element) => (
+      <RenderComponents.RenderDatePicker t={t} element={element} />
+    ),
   },
 };

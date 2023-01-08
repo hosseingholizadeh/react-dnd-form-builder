@@ -1,7 +1,7 @@
 import { Input } from "antd";
-import { renderStyle } from "../PreviewUtils";
+import { renderStyle } from "../RenderUtils";
 
-export default function PreviewInput({ t, element }) {
+export default function RenderInput({ t, element }) {
   console.log(element);
   let { options, name, left, top } = element;
   let { style } = options ?? {};

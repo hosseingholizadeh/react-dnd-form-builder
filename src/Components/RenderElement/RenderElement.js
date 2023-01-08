@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
-import * as elements from "../Element/Elements";
+import { ElementType } from "../Element/ElementType";
 import { BOX } from "../types";
 import ElementOptionsModal from "../Element/ElementOptions/ElementOptionsModal";
 import { getEmptyImage } from "react-dnd-html5-backend";
@@ -47,7 +47,7 @@ export default function RenderElement({
     updateElementOptions(element, options);
   };
 
-  let elName = element.name + "Element";
+  let elementType = ElementType[element.name];
   return (
     <div
       className={"dragitem" + (isSelected ? " selected" : "")}
@@ -63,8 +63,8 @@ export default function RenderElement({
         close={closeOptionsModal}
         saveOptions={saveElementOptions}
       />
-      {elements[elName] ? (
-        elements[elName](t, element)
+      {elementType ? (
+        elementType.render(t, element)
       ) : (
         <span>{element.name}</span>
       )}
