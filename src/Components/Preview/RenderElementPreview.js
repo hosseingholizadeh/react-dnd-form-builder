@@ -1,10 +1,11 @@
-import * as elements from "../Element/Elements";
+import { ElementType } from "../Element/ElementType";
 
 export default function RenderElementPreview(t, element) {
   let { name } = element;
-  let elName = name + "Element";
+  let elementType = ElementType[name];
+  let hasPreview = <span>{name}</span>;
 
-  return (
-    <>{elements[elName] ? elements[elName](t, element) : <span>{name}</span>}</>
-  );
+  if (!hasPreview) console.warn(`element ${name} has no preview`);
+
+  return <>{hasPreview ? elementType.preview(t, element) : name}</>;
 }

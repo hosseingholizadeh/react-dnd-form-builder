@@ -20,13 +20,16 @@ export default function PreviewForm({ t, elements, visible, close }) {
         </Button>,
       ]}
     >
-      <form>
-        <div className="">
-          {Object.keys(elements).map((key) =>
-            RenderElementPreview(t, elements[key])
-          )}
-        </div>
-      </form>
+      {(() => {
+        if (visible)
+          return (
+            <form>
+              {Object.keys(elements).map((key) =>
+                RenderElementPreview(t, elements[key])
+              )}
+            </form>
+          );
+      })()}
     </Modal>
   );
 }

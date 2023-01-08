@@ -47,7 +47,7 @@ export function DragLayerContainer({
         // console.log("getClientOffset: ", monitor.getClientOffset());
 
         const delta = monitor.getClientOffset();
-        console.log(delta);
+        // console.log(delta);
         const left = Math.round(delta.x - 50);
         const top = Math.round(delta.y + 15);
         // let left = Math.round(item.left + delta.x);
