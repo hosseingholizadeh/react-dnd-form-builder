@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import ColorPicker from "../../lib/ColorPicker";
 
 export default function BaseElementOptions({ t, style, setOptions }) {
-  console.log(style);
   const onChangeStyle = (option, value) => {
     let newStyle = { ...style, [option]: value };
     setOptions((prevOptions) => ({ ...prevOptions, style: newStyle }));

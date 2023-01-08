@@ -89,30 +89,28 @@ export function DragLayerContainer({
   };
 
   return (
-    <>
-      <div
-        ref={drop}
-        className="dragcontainer"
-        id="dragContainer"
-        tabIndex={0}
-        onClick={onClickInsideDragContainer}
-        onKeyDown={onKeyDownInsideDragContainer}
-      >
-        {Object.keys(elements).map((key) => {
-          return (
-            <RenderElement
-              t={t}
-              id={key}
-              element={elements[key]}
-              isSelected={selectedItem && selectedItem.id === key}
-              setSelectedItem={setSelectedItem}
-              removeElement={removeElement}
-              updateElement={updateElement}
-              updateElementOptions={updateElementOptions}
-            />
-          );
-        })}
-      </div>
-    </>
+    <div
+      ref={drop}
+      className="dragcontainer"
+      id="dragContainer"
+      tabIndex={0}
+      onClick={onClickInsideDragContainer}
+      onKeyDown={onKeyDownInsideDragContainer}
+    >
+      {Object.keys(elements).map((key) => {
+        return (
+          <RenderElement
+            t={t}
+            id={key}
+            element={elements[key]}
+            isSelected={selectedItem && selectedItem.id === key}
+            setSelectedItem={setSelectedItem}
+            removeElement={removeElement}
+            updateElement={updateElement}
+            updateElementOptions={updateElementOptions}
+          />
+        );
+      })}
+    </div>
   );
 }

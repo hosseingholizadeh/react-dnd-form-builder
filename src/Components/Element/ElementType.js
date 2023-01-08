@@ -17,6 +17,7 @@ import RateOptions from "./ElementOptions/RateOptions";
 export const ElementType = {
   button: {
     value: 1,
+    hasDataSource: false,
     optionsComponent: (t, options, setOptions) => (
       <ButtonOptions t={t} options={options} setOptions={setOptions} />
     ),
@@ -29,6 +30,7 @@ export const ElementType = {
   },
   dropdown: {
     value: 3,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <DropdownOptions t={t} options={options} setOptions={setOptions} />
     ),
@@ -41,24 +43,28 @@ export const ElementType = {
   },
   steps: {
     value: 5,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <StepsOptions t={t} options={options} setOptions={setOptions} />
     ),
   },
   radio: {
     value: 6,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <RadioOptions t={t} options={options} setOptions={setOptions} />
     ),
   },
   checkbox: {
     value: 7,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <CheckboxOptions t={t} options={options} setOptions={setOptions} />
     ),
   },
   tab: {
     value: 8,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <TabsOptions t={t} options={options} setOptions={setOptions} />
     ),
@@ -95,6 +101,7 @@ export const ElementType = {
   },
   table: {
     value: 14,
+    hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <TableOptions t={t} options={options} setOptions={setOptions} />
     ),
