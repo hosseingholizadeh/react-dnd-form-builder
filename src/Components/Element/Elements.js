@@ -2,6 +2,7 @@ import {
   Button,
   Carousel,
   Checkbox,
+  DatePicker,
   Divider,
   Dropdown,
   Image,
@@ -129,10 +130,7 @@ export function imageElement(t, element) {
   let { options } = element;
   return (
     <Image.PreviewGroup style={renderElementStyle(options?.style)}>
-      <Image
-        width={200}
-        src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
-      />
+      <Image width={200} />
     </Image.PreviewGroup>
   );
 }
@@ -234,16 +232,32 @@ export function tableElement(t, element) {
   return <Table bordered style={renderElementStyle(options?.style)} />;
 }
 
+export function datepickerElement(t, element) {
+  let { options } = element;
+  return <DatePicker style={renderElementStyle(options?.style)} />;
+}
+
+//========================== Icons ===============================
+
 export const buttonIcon = () => (
   <ion-icon name="tablet-landscape-outline"></ion-icon>
 );
 
-export const inputIcon = () => (
-  <ion-icon name="tablet-landscape-outline"></ion-icon>
-);
-
-export const dropdownIcon = () => (
-  <ion-icon name="tablet-landscape-outline"></ion-icon>
-);
-
+export const inputIcon = () => <ion-icon name="create-outline"></ion-icon>;
+export const dropdownIcon = () => <ion-icon name="list-outline"></ion-icon>;
+export const rateIcon = () => <ion-icon name="star-half-outline"></ion-icon>;
+export const imageIcon = () => <ion-icon name="image-outline"></ion-icon>;
 export const tableIcon = () => <ion-icon name="grid-outline"></ion-icon>;
+export const switchIcon = () => <ion-icon name="toggle-outline"></ion-icon>;
+export const progressIcon = () => <ion-icon name="reload-outline"></ion-icon>;
+export const tabIcon = () => <ion-icon name="apps-outline"></ion-icon>;
+export const stepsIcon = () => <ion-icon name="analytics-outline"></ion-icon>;
+export const checkboxIcon = () => <ion-icon name="checkbox-outline"></ion-icon>;
+export const radioIcon = () => (
+  <ion-icon name="radio-button-on-outline"></ion-icon>
+);
+export const datepickerIcon = () => <ion-icon name="today-outline"></ion-icon>;
+export const dividerIcon = () => <ion-icon name="remove-outline"></ion-icon>;
+export const carouselIcon = () => (
+  <ion-icon name="caret-forward-circle-outline"></ion-icon>
+);

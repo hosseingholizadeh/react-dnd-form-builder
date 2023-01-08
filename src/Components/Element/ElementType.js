@@ -13,6 +13,7 @@ import CarouselOptions from "./ElementOptions/CarouselOptions";
 import StepsOptions from "./ElementOptions/StepsOptions";
 import TabsOptions from "./ElementOptions/TabsOptions";
 import RateOptions from "./ElementOptions/RateOptions";
+import DatePickerOptions from "./ElementOptions/DatePickerOptions";
 
 export const ElementType = {
   button: {
@@ -104,6 +105,12 @@ export const ElementType = {
     hasDataSource: true,
     optionsComponent: (t, options, setOptions) => (
       <TableOptions t={t} options={options} setOptions={setOptions} />
+    ),
+  },
+  datepicker: {
+    value: 15,
+    optionsComponent: (t, options, setOptions) => (
+      <DatePickerOptions t={t} options={options} setOptions={setOptions} />
     ),
   },
 };

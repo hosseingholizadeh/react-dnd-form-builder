@@ -64,11 +64,7 @@
   height: 32px;
 }
 
-.fb-container .fb-element-item ion-icon[name="tablet-landscape-outline"] {
-  color: #ff4d4f;
-}
-
-.fb-container .fb-element-item ion-icon[name="grid-outline"] {
+.fb-container .fb-element-item ion-icon {
   color: #4d50ff;
 }
 
