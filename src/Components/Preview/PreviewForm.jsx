@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
+import RenderElementPreview from "./RenderElementPreview";
 
 export default function PreviewForm({ t, elements, visible, close }) {
-  console.log(visible);
   return (
     <Modal
       className="preview-modal"
@@ -20,9 +20,13 @@ export default function PreviewForm({ t, elements, visible, close }) {
         </Button>,
       ]}
     >
-      {Object.keys(elements).map((key) => (
-        <>{elements[key].name}</>
-      ))}
+      <form>
+        <div className="">
+          {Object.keys(elements).map((key) =>
+            RenderElementPreview(t, elements[key])
+          )}
+        </div>
+      </form>
     </Modal>
   );
 }

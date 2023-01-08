@@ -5,7 +5,7 @@ import Components from "./Components";
 import { DragLayer } from "./DragLayer/DragLayer";
 import { DragLayerContainer } from "./DragLayer/DragLayerContainer";
 import { generateElement } from "./FbUtils";
-import PreviewForm from "./PreviewForm";
+import PreviewForm from "./Preview/PreviewForm.jsx";
 import Toolbar from "./Toolbar";
 
 export default function FormBuilder(props) {
