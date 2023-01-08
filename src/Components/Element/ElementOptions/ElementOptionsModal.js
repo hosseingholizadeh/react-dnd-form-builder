@@ -45,7 +45,7 @@ export default function ElementOptionsModal({
       okText={t("save")}
       cancelText={t("cancel")}
       width={750}
-      style={{ height: 450 }}
+      style={{ height: 650 }}
       footer={[
         <Button key="back" onClick={() => close()}>
           {t("cancel")}

@@ -3,9 +3,10 @@ export const DataLoadOptions = {
   manual: 2,
 };
 
-export class Datasource {
+export class KeyValueDatasource {
   loadType;
   url;
+  data = [];
 
   updateState;
 
@@ -24,5 +25,27 @@ export class Datasource {
   setUrl(url) {
     this.url = url;
     this.updateState();
+  }
+
+  setData(data) {
+    this.data = data;
+    this.updateState();
+  }
+
+  addDataItem(text, value) {
+    let index = this.data.findIndex((d) => d.value === value);
+    if (index === -1) {
+      this.data.push({ text, value });
+      this.updateState();
+    }
+  }
+
+  removeDataItem(item) {
+    let value = item.value;
+    let index = this.data.findIndex((d) => d.value === value);
+    if (index >= 0) {
+      this.data.splice(index, 1);
+      this.updateState();
+    }
   }
 }
