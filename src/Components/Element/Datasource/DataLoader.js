@@ -1,5 +1,6 @@
 import { RenderType } from "../ElementType";
 import { DataLoadType } from "./DataLoadType";
+import * as reqs from "../../../lib/js/request";
 
 export default class DataLoader {
   static load(datasource, renderType) {
