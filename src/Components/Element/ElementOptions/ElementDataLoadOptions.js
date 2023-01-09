@@ -1,7 +1,8 @@
 import { Button, Input, Radio, Space, Table } from "antd";
 import { t } from "i18next";
 import React, { useEffect, useState } from "react";
-import { DataLoadOptions, KeyValueDatasource } from "./Datasource";
+import { DataLoadType } from "../Datasource/DataLoadType";
+import { KeyValueDatasource } from "../Datasource/KeyValueDatasource";
 
 export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
   console.log(datasource);
@@ -14,7 +15,7 @@ export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
 
   if (!datasource) {
     datasource = new KeyValueDatasource(
-      DataLoadOptions.fromserver,
+      DataLoadType.fromserver,
       onChangeDataSource
     );
   }
@@ -29,8 +30,8 @@ export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
                 defaultValue={datasource.loadType}
                 onChange={(e) => datasource.changeLoadType(e.target.value)}
               >
-                {Object.keys(DataLoadOptions).map((key) => (
-                  <Radio value={DataLoadOptions[key]}>{t(key)}</Radio>
+                {Object.keys(DataLoadType).map((key) => (
+                  <Radio value={DataLoadType[key]}>{t(key)}</Radio>
                 ))}
               </Radio.Group>
             </div>
@@ -39,7 +40,7 @@ export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
       </div>
 
       {(() => {
-        if (datasource.loadType === DataLoadOptions.fromserver) {
+        if (datasource.loadType === DataLoadType.fromserver) {
           return <FromServerDatasourceOptions datasource={datasource} />;
         } else {
           return <ManualDatasourceOptions datasource={datasource} />;
@@ -60,12 +61,12 @@ function FromServerDatasourceOptions({ datasource }) {
 }
 
 function ManualDatasourceOptions({ datasource }) {
-  const [text, setText] = useState(null);
+  const [label, setLabel] = useState(null);
   const [value, setValue] = useState(null);
 
   const columns = [
     {
-      dataIndex: "text",
+      dataIndex: "label",
       title: t("text"),
     },
     {
@@ -85,11 +86,11 @@ function ManualDatasourceOptions({ datasource }) {
   ];
 
   const canAddNewItem = () =>
-    text && text.trim() !== "" && value && value.trim !== "";
+    label && label.trim() !== "" && value && value.trim !== "";
   const addNewDataItem = (e) => {
     if (canAddNewItem()) {
-      datasource.addDataItem(text, value);
-      setText("");
+      datasource.addDataItem(label, value);
+      setLabel("");
       setValue("");
     }
   };
@@ -108,8 +109,8 @@ function ManualDatasourceOptions({ datasource }) {
                   placeholder={t("text")}
                   style={{ marginBottom: 5 }}
                   width={120}
-                  onChange={(e) => setText(e.target.value)}
-                  value={text}
+                  onChange={(e) => setLabel(e.target.value)}
+                  value={label}
                 />
                 <Input
                   type="text"

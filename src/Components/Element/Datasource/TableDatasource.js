@@ -1,9 +1,4 @@
-export const DataLoadOptions = {
-  fromserver: 1,
-  manual: 2,
-};
-
-export class KeyValueDatasource {
+export class TableDatasource {
   loadType;
   url;
   data = [];
@@ -32,10 +27,10 @@ export class KeyValueDatasource {
     this.updateState();
   }
 
-  addDataItem(text, value) {
+  addDataItem(label, value) {
     let index = this.data.findIndex((d) => d.value === value);
     if (index === -1) {
-      this.data.push({ text, value });
+      this.data.push({ label, value });
       this.updateState();
     }
   }

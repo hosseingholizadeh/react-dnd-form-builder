@@ -47,9 +47,6 @@ export default function ElementOptionsModal({
       width={750}
       style={{ height: 650 }}
       footer={[
-        <Button key="back" onClick={() => close()}>
-          {t("cancel")}
-        </Button>,
         <Button
           key="submit"
           type="primary"
@@ -58,7 +55,7 @@ export default function ElementOptionsModal({
             close();
           }}
         >
-          {t("save")}
+          {t("close")}
         </Button>,
       ]}
     >
