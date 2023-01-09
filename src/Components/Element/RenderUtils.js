@@ -1,4 +1,4 @@
-export function renderStyle(style, left, top) {
+export function renderStyle(style) {
   let { backgroundColorRgb, colorRgb } = style ?? {};
 
   return {
@@ -9,5 +9,12 @@ export function renderStyle(style, left, top) {
     backgroundColor: backgroundColorRgb
       ? `rgba(${backgroundColorRgb.r}, ${backgroundColorRgb.g}, ${backgroundColorRgb.b}, ${backgroundColorRgb.a})`
       : undefined,
+  };
+}
+
+export function renderElementContainerStyle(top, left) {
+  return {
+    top: top,
+    left: left,
   };
 }

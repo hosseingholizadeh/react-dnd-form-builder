@@ -13,7 +13,7 @@ export default function PreviewForm({ t, elements, visible, close }) {
       open={visible}
       onCancel={() => close()}
       cancelText={t("cancel")}
-      width={900}
+      width={1300}
       footer={[
         <Button key="submit" type="primary" onClick={() => close()}>
           {t("close")}
@@ -24,9 +24,11 @@ export default function PreviewForm({ t, elements, visible, close }) {
         if (visible)
           return (
             <form>
-              {Object.keys(elements).map((key) =>
-                RenderElementPreview(t, elements[key])
-              )}
+              <div class="form-preview">
+                {Object.keys(elements).map((key) =>
+                  RenderElementPreview(t, elements[key])
+                )}
+              </div>
             </form>
           );
       })()}

@@ -2,7 +2,6 @@ import { Checkbox } from "antd";
 import { renderStyle } from "../RenderUtils";
 
 export default function PreviewCheckbox({ t, element }) {
-  console.log(element);
   let { options, name } = element;
   let { style } = options ?? {};
   const plainOptions = ["Apple", "Pear", "Orange"];

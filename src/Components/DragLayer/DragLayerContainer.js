@@ -49,7 +49,7 @@ export function DragLayerContainer({
         const delta = monitor.getClientOffset();
         // console.log(delta);
         const left = Math.round(delta.x - 50);
-        const top = Math.round(delta.y + 15);
+        const top = Math.round(delta.y + 20);
         // let left = Math.round(item.left + delta.x);
         // let top = Math.round(item.top + delta.y);
         addBox(item, left, top);

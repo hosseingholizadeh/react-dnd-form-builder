@@ -2,7 +2,6 @@ import { Carousel } from "antd";
 import { renderStyle } from "../RenderUtils";
 
 export default function RenderCarousel({ t, element }) {
-  console.log(element);
   let { options, name, left, top } = element;
   let { style } = options ?? {};
 

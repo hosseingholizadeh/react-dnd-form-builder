@@ -1,7 +1,7 @@
 import React from "react";
 import { useDragLayer } from "react-dnd";
 import { BOX } from "../types";
-import * as elements from "../Element/Elements";
+import { ElementType, RenderType } from "../Element/ElementType";
 
 function getDragLayerStyles(initialOffset, currentOffset) {
   if (!initialOffset || !currentOffset) {
@@ -31,13 +31,16 @@ export function DragLayer({ t }) {
     }));
 
   const renderItem = () => {
-    let elName = item.name + "Element";
+    let elementType = ElementType[item.name];
+    let hasRender = elementType && elementType.render;
+
+    if (!hasRender) console.warn(`element ${item.name} has no render function`);
     switch (itemType) {
       case BOX:
-        return elements[elName] ? (
-          elements[elName](t, item)
+        return hasRender ? (
+          elementType.render(t, item, RenderType.dragdrop)
         ) : (
-          <span>{elName}</span>
+          <span>{item.name}</span>
         );
       default:
         return null;

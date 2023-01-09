@@ -2,7 +2,6 @@ import { Rate } from "antd";
 import { renderStyle } from "../RenderUtils";
 
 export default function RenderRate({ t, element }) {
-  console.log(element);
   let { options, name } = element;
   let { style } = options ?? {};
 

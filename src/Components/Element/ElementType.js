@@ -3,6 +3,12 @@ import React from "react";
 import { RenderComponents } from "./Elements/index";
 import { ElementOptions } from "./ElementOptions/index";
 
+export const RenderType = {
+  dragdrop: 1,
+  preview: 2,
+  finalform: 3,
+};
+
 export const ElementType = {
   button: {
     value: 1,
@@ -15,8 +21,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderButton t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderButton
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   input: {
@@ -30,8 +40,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderInput t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderInput
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   dropdown: {
@@ -45,8 +59,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderDropDown t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderDropDown
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   progress: {
@@ -60,8 +78,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderProgress t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderProgress
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   steps: {
@@ -75,8 +97,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderButton t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderButton
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   radio: {
@@ -90,8 +116,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderRadio t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderRadio
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   checkbox: {
@@ -105,8 +135,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderCheckbox t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderCheckbox
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   tab: {
@@ -120,8 +154,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderTab t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderTab
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   switch: {
@@ -135,8 +173,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderSwitch t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderSwitch
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   image: {
@@ -150,8 +192,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderImage t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderImage
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   rate: {
@@ -165,8 +211,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderRate t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderRate
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   carousel: {
@@ -180,8 +230,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderCarousel t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderCarousel
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   divider: {
@@ -195,8 +249,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderDivider t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderDivider
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   table: {
@@ -210,8 +268,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderTable t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderTable
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
   datepicker: {
@@ -225,8 +287,12 @@ export const ElementType = {
         setOptions={setOptions}
       />
     ),
-    render: (t, element) => (
-      <RenderComponents.RenderDatePicker t={t} element={element} />
+    render: (t, element, renderType) => (
+      <RenderComponents.RenderDatePicker
+        t={t}
+        element={element}
+        renderType={renderType}
+      />
     ),
   },
 };

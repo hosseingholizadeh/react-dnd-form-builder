@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDrag } from "react-dnd";
-import { ElementType } from "../Element/ElementType";
+import { ElementType, RenderType } from "../Element/ElementType";
 import { BOX } from "../types";
 import ElementOptionsModal from "../Element/ElementOptions/ElementOptionsModal";
 import { getEmptyImage } from "react-dnd-html5-backend";
@@ -9,8 +9,10 @@ function getDraggableBoxStyles(left, top, isDragging) {
   const transform = `translate3d(${left}px, ${top}px, 0)`;
   return {
     position: "absolute",
-    transform,
-    WebkitTransform: transform,
+    left,
+    top,
+    //transform,
+    //WebkitTransform: transform,
     // IE fallback: hide the real node using CSS when dragging
     // because IE will ignore our custom "empty image" drag preview.
     opacity: isDragging ? 0 : 1,
@@ -50,6 +52,7 @@ export default function RenderElement({
   let elementType = ElementType[element.name];
   return (
     <div
+      aria-readonly={true}
       className={"dragitem" + (isSelected ? " selected" : "")}
       ref={drag}
       onClick={() => (setSelectedItem ? setSelectedItem(element) : false)}
@@ -64,7 +67,7 @@ export default function RenderElement({
         saveOptions={saveElementOptions}
       />
       {elementType ? (
-        elementType.render(t, element)
+        elementType.render(t, element, RenderType.dragdrop)
       ) : (
         <span>{element.name}</span>
       )}

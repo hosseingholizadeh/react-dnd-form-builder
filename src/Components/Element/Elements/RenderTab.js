@@ -2,7 +2,6 @@ import { Tabs } from "antd";
 import { renderStyle } from "../RenderUtils";
 
 export default function RenderTab({ t, element }) {
-  console.log(element);
   let { options, name } = element;
   let { style } = options ?? {};
 

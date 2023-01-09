@@ -58,6 +58,12 @@ export default function FormBuilder(props) {
         ...prevElements,
         [last.id]: last,
       }));
+
+      console.log(
+        `element ${last.name} with id ${last.id} returned to the element store from removed cache`
+      );
+    } else {
+      console.warn("no removed element found from cache");
     }
   };
 
