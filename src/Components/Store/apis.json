@@ -1,0 +1,17 @@
+{
+  "load": [
+    {
+      "id": 1,
+      "title": "test api",
+      "url": "test/getlist1",
+      "kpis": ["id", "name"]
+    },
+    {
+      "id": 2,
+      "title": "test api2",
+      "url": "test/getlist2",
+      "kpis": ["id", "name"]
+    }
+  ],
+  "submit": []
+}

@@ -6,9 +6,10 @@ import { DragLayer } from "./DragLayer/DragLayer";
 import { DragLayerContainer } from "./DragLayer/DragLayerContainer";
 import { generateElement } from "./FbUtils";
 import PreviewForm from "./Preview/PreviewForm.jsx";
+import { ApiStore } from "./Store/ApiStore";
 import Toolbar from "./Toolbar";
 
-export default function FormBuilder(props) {
+export default function FormBuilder() {
   let lan = culture.getLanguage();
   let t = i18next.getFixedT(lan);
 
@@ -66,6 +67,8 @@ export default function FormBuilder(props) {
       console.warn("no removed element found from cache");
     }
   };
+
+  ApiStore.LoadApis();
 
   return (
     <div class="card fb-container">
