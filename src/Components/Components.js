@@ -24,7 +24,7 @@ export default function Components({ t, addElement }) {
       <Table
         columns={columns}
         dataSource={Object.keys(ElementType)}
-        scroll={{ y: tableBodyHeight - 50 }}
+        scroll={{ y: tableBodyHeight - 65 }}
         pagination={false}
         bordered={false}
       />
