@@ -15,7 +15,7 @@ export default function Element({ t, name, id }) {
 
   let elementType = ElementType[name];
   return (
-    <span ref={drag} class="fb-element-item" key={id}>
+    <span ref={drag} className="fb-element-item" key={id}>
       <ion-icon
         name={elementType?.icon ?? "tablet-landscape-outline"}
       ></ion-icon>

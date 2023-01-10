@@ -20,7 +20,7 @@ export default function Components({ t, addElement }) {
 
   let tableBodyHeight = window.innerHeight;
   return (
-    <div class="d-flex">
+    <div class="d-flex widgets-container">
       <Table
         columns={columns}
         dataSource={Object.keys(ElementType)}

@@ -7,7 +7,7 @@ export default function RenderImage({ t, element }) {
 
   return (
     <Image.PreviewGroup style={renderStyle(options?.style)}>
-      <Image width={200} />
+      <Image src="./image.jpg" width={200} height={200} />
     </Image.PreviewGroup>
   );
 }

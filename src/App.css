@@ -40,9 +40,23 @@
   right: 0;
 }
 
+.fb-container .widgets-container td.ant-table-cell {
+  padding: 0 !important;
+  /* border-top:  1px dashed #4d50ff !important; */
+}
+
+/* .fb-container .widgets-container .fb-element-item {
+  border: 1px dashed #4d50ff;
+} */
+
+.fb-container .fb-element-item.dragging {
+  border: none !important;
+}
+
 .fb-container .fb-element-item {
   width: 100%;
-  height: 35px;
+  height: 50px;
+  margin-top: 5px;
   cursor: grab;
   border: none;
   outline: none;
@@ -51,17 +65,19 @@
   color: #000;
   font-size: 13px;
   font-weight: 600;
-  display: block;
+  display: flex;
 }
 
 .fb-container .fb-element-item span {
   width: calc(100% - 105px);
   text-align: center;
+  margin-top: 4px;
 }
 
 .fb-container .fb-element-item ion-icon {
-  width: 100px;
-  height: 32px;
+  width: 65px;
+  height: 40px;
+  margin-top: 4px;
 }
 
 .fb-container .fb-element-item ion-icon {
@@ -91,13 +107,15 @@ div.inputs label {
 }
 
 /*=============*/
+
 .dragcontainer {
   width: 100%;
   height: 725px;
   position: relative;
-  border: 1px solid #999;
+  border: 1px solid var(--bs-gray-400);
   border-radius: 5px;
   margin: 10px -12px;
+  background: #f8f9fa;
 }
 
 .dragitem {

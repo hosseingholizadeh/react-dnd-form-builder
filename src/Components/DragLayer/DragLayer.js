@@ -51,6 +51,7 @@ export function DragLayer({ t }) {
     return null;
   }
 
+  console.log("drag layer on element: ", item.name);
   return (
     <div className="draglayer">
       <div style={getDragLayerStyles(initialOffset, currentOffset)}>
