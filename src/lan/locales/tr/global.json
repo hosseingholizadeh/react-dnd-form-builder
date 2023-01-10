@@ -16,5 +16,8 @@
   "select": "Select",
   "search": "Search",
   "optionModalTitle": "options {{name}}",
-  "preview": "preview"
+  "preview": "preview",
+  "selectApi": "Select Api",
+  "elements": "Elements",
+  "selectOne": "Select One"
 }

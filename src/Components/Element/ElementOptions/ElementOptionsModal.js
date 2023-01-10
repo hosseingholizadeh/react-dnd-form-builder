@@ -1,7 +1,7 @@
 import { Button, Modal, Tabs } from "antd";
 import { useState } from "react";
 import { ElementType } from "../ElementType";
-import ElementDataLoadOptions from "./ElementDataLoadOptions";
+import ElementDataLoadOptions from "./Data/ElementDataLoadOptions";
 
 export default function ElementOptionsModal({
   t,
@@ -37,7 +37,7 @@ export default function ElementOptionsModal({
     <Modal
       destroyOnClose={true}
       maskClosable={false}
-      zIndex={999}
+      zIndex={9}
       title={t("optionModalTitle", { name: t(element.name) })}
       centered
       open={visible}

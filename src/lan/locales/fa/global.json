@@ -26,6 +26,10 @@
   "carousel": "اسلایدر",
   "divider": "جدا کننده",
   "table": "جدول",
+  "checkbox": "چک باکس",
   "optionModalTitle": "تنظیمات {{name}}",
-  "preview": "پیش نمایش"
+  "preview": "پیش نمایش",
+  "selectApi": "انتخاب Api",
+  "elements": "المان ها",
+  "selectOne": "انتخاب کنید"
 }

@@ -16,5 +16,22 @@
   "select": "Select",
   "search": "Search",
   "optionModalTitle": "options {{name}}",
-  "preview": "preview"
+  "preview": "preview",
+  "selectApi": "Select Api",
+  "button": "Button",
+  "input": "Input",
+  "dropdown": "Drop Down List",
+  "progress": "Progress",
+  "steps": "Steps",
+  "radio": "Radio",
+  "tab": "Tab",
+  "switch": "Switch",
+  "image": "Image",
+  "rate": "Rate",
+  "carousel": "Carousel",
+  "divider": "Divider",
+  "table": "Table",
+  "checkbox": "Checkbox",
+  "elements": "Elements",
+  "selectOne": "Select One"
 }

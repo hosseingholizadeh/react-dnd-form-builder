@@ -1,7 +1,9 @@
 export class KeyValueDatasource {
   loadType;
-  url;
+  api;
   data = [];
+  labelField;
+  valueField;
 
   updateState;
 
@@ -17,8 +19,18 @@ export class KeyValueDatasource {
     this.updateState();
   }
 
-  setUrl(url) {
-    this.url = url;
+  setApi(api) {
+    this.api = api;
+    this.updateState();
+  }
+
+  setLabelField(labelField) {
+    this.labelField = labelField;
+    this.updateState();
+  }
+
+  setValueField(valueField) {
+    this.valueField = valueField;
     this.updateState();
   }
 

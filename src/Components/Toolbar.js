@@ -6,7 +6,7 @@ export default function Toolbar({ t, openPreview }) {
       <div className="col-12">
         <Space>
           <Button type="primary" onClick={openPreview}>
-            {t("Preview")}
+            {t("preview")}
           </Button>
         </Space>
       </div>
