@@ -1,7 +1,7 @@
 import { Modal, notification } from "antd";
 import i18n from "../../lan/config";
 
-export function Error(msg) {
+export function ErrorMessage(msg) {
   notification["error"]({
     message: i18n.t("fail"),
     duration: 2.5,
@@ -10,7 +10,7 @@ export function Error(msg) {
   });
 }
 
-export function Success(msg) {
+export function SuccessMessage(msg) {
   notification["success"]({
     message: i18n.t("success"),
     duration: 2.5,

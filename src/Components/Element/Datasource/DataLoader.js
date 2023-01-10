@@ -1,28 +1,54 @@
-import { RenderType } from "../ElementType";
-import { DataLoadType } from "./DataLoadType";
+import { ErrorMessage } from "../../../lib/js/message";
 import * as reqs from "../../../lib/js/request";
+import { DataLoadType } from "./DataLoadType";
 
 export default class DataLoader {
-  static load(datasource, renderType) {
+  static load(t, datasource, setData) {
     //dont load data when it's in drag and drop state
-    if (!datasource || renderType === RenderType.dragdrop) {
-      return [];
+    if (!datasource) {
+      return false;
     }
 
     if (datasource.loadType === DataLoadType.fromserver) {
-      return DataLoader.loadDataFromServer(datasource);
+      return DataLoader.loadDataFromServer(t, datasource, setData);
     } else {
-      return DataLoader.loadManualData(datasource);
+      return DataLoader.loadManualData(t, datasource, setData);
     }
   }
 
-  static loadManualData(datasource) {
-    return datasource.data;
+  static loadManualData(t, datasource, setData) {
+    setData(datasource.data);
   }
 
-  static loadDataFromServer(datasource) {
-    console.log(datasource);
-    //todo
-    return [];
+  static loadDataFromServer(t, datasource, setData) {
+    console.log("loading from server");
+    let api = datasource.api;
+    if (!api) {
+      throw new Error("the api is not set to this element");
+    }
+
+    if (!datasource.labelField) {
+      throw new Error("label field is not set for this element datasource");
+    }
+
+    if (!datasource.valueField) {
+      throw new Error("value field is not set for this element datasource");
+    }
+
+    reqs.get_request(
+      api.url,
+      (res) => {
+        if (res.status === 200 && res.data)
+          setData(
+            res.data.map((d) => ({
+              label: d[datasource.labelField],
+              value: d[datasource.valueField],
+            }))
+          );
+        else return ErrorMessage(t("load data failed"));
+      },
+      (error) => {},
+      { lan: t.lang }
+    );
   }
 }
