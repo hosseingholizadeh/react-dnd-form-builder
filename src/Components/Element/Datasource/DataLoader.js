@@ -9,10 +9,14 @@ export default class DataLoader {
       return false;
     }
 
-    if (datasource.loadType === DataLoadType.fromserver) {
-      return DataLoader.loadDataFromServer(t, datasource, setData);
-    } else {
-      return DataLoader.loadManualData(t, datasource, setData);
+    try {
+      if (datasource.loadType === DataLoadType.fromserver) {
+        DataLoader.loadDataFromServer(t, datasource, setData);
+      } else {
+        DataLoader.loadManualData(t, datasource, setData);
+      }
+    } catch (e) {
+      console.error("failed to load data. error: ", e);
     }
   }
 

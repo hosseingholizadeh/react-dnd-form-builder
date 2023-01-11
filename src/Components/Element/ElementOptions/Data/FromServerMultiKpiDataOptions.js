@@ -1,10 +1,10 @@
 import { Button, Input, Select, Space, Tooltip } from "antd";
 import React, { useEffect, useState } from "react";
-import { ApiSelectorInput, KpiSelect } from "./ApiSelectInputs";
+import { ApiSelectorInput } from "./ApiSelectInputs";
 import DataApiSelectModal from "./DataApiSelectModal";
 
 // this will be user for the {label, value} lists => ex: DropDownList
-export function FromServerDatasourceOptions({ t, datasource }) {
+export function FromServerMultiKpiDataOptions({ t, datasource }) {
   const [apiSelectModalVisible, setApiSelectModalVisible] = useState(false);
   const [kpis, setKpis] = useState([]);
 
@@ -79,20 +79,26 @@ export function FromServerDatasourceOptions({ t, datasource }) {
               <label style={{ marginRight: 5, marginLeft: 5 }}>
                 {t("label")}
               </label>
-              <KpiSelect
-                api={datasource.api}
-                kpis={kpis}
+              <Select
+                disabled={
+                  datasource.api === null || datasource.api === undefined
+                }
+                options={kpis}
                 value={datasource.labelField}
                 onChange={setSelectedLabelMapKpi}
+                style={{ width: 150 }}
               />
               <label style={{ marginRight: 5, marginLeft: 5 }}>
                 {t("value")}
               </label>
-              <KpiSelect
-                api={datasource.api}
-                kpis={kpis}
+              <Select
+                disabled={
+                  datasource.api === null || datasource.api === undefined
+                }
+                options={kpis}
                 value={datasource.valueField}
                 onChange={setSelectedValueMapKpi}
+                style={{ width: 150 }}
               />
             </div>
           </Space>

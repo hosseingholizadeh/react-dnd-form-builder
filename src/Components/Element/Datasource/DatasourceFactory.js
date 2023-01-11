@@ -18,7 +18,7 @@ export class DatasourceFactory {
           onChangeDataSource
         );
       default:
-        throw new Error("no datasource type is set for this element");
+        console.error("no datasource type is set for this element");
     }
   }
 }
