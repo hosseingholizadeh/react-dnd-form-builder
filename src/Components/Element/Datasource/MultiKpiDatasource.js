@@ -5,6 +5,7 @@ export class MultiKpiDatasource {
   selectedKpis = [];
   pk;
   updateState;
+  pageable = true;
 
   constructor(loadType, updateState) {
     this.loadType = loadType;
@@ -72,5 +73,11 @@ export class MultiKpiDatasource {
 
   setPk(pk) {
     this.pk = pk;
+    this.updateState();
+  }
+
+  setIsPageable(pageable) {
+    this.pageable = pageable;
+    this.updateState();
   }
 }

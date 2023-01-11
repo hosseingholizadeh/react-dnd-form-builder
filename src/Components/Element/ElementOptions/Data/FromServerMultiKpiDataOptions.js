@@ -1,4 +1,4 @@
-import { Button, Space, Table } from "antd";
+import { Button, Checkbox, Space, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import { ApiSelectorInput, KpiSelect } from "./ApiSelectInputs";
 import DataApiSelectModal from "./DataApiSelectModal";
@@ -55,6 +55,10 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
 
   const selectPk = (value) => {
     datasource.setPk(value);
+  };
+
+  const onChangePaging = (checked) => {
+    datasource.setIsPageable(checked);
   };
 
   const columns = [
@@ -117,64 +121,78 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
         {(() => {
           if (datasource.api) {
             return (
-              <div class="inputs">
-                <dic class="col-4">
-                  <Table
-                    size="small"
-                    bordered
-                    scroll={{ y: 175 }}
-                    style={{ height: 175, maxHeight: 175 }}
-                    columns={columns}
-                    dataSource={[...getNotSelectedKpis()]}
-                    pagination={false}
-                    rowClassName={(record, index) =>
-                      selectedKpi?.value === record.value
-                        ? "ant-table-row-selected"
-                        : ""
-                    }
-                    onRow={(record, index) => {
-                      return {
-                        onClick: (e) => {
-                          setSelectedKpiApi(record);
-                        },
-                      };
-                    }}
-                  />
-                </dic>
-                <dic class="col-4 text-center">
-                  <Space direction="vertical" style={{ display: "flex" }}>
-                    <Button type="primary" onClick={addKpiToSelected}>
-                      <ion-icon name="arrow-forward-outline"></ion-icon>
-                    </Button>
-                    <Button type="primary" onClick={removeSelectedKpi}>
-                      <ion-icon name="arrow-back-outline"></ion-icon>
-                    </Button>
+              <>
+                <div class="inputs">
+                  <Space>
+                    <div class="form-group">
+                      <Checkbox
+                        defaultChecked={datasource.pageable}
+                        onChange={onChangePaging}
+                      >
+                        {t("isPageable")}
+                      </Checkbox>
+                    </div>
                   </Space>
-                </dic>
-                <dic class="col-4">
-                  <Table
-                    size="small"
-                    bordered
-                    scroll={{ y: 175 }}
-                    style={{ height: 175, maxHeight: 175 }}
-                    columns={selectedTableColumns}
-                    dataSource={[...datasource.selectedKpis]}
-                    pagination={false}
-                    rowClassName={(record, index) =>
-                      selectedKpiForRemove?.value === record.value
-                        ? "ant-table-row-selected"
-                        : ""
-                    }
-                    onRow={(record, index) => {
-                      return {
-                        onClick: (e) => {
-                          setSelectedKpiApiForRemove(record);
-                        },
-                      };
-                    }}
-                  />
-                </dic>
-              </div>
+                </div>
+                <div class="inputs">
+                  <dic class="col-4">
+                    <Table
+                      size="small"
+                      bordered
+                      scroll={{ y: 175 }}
+                      style={{ height: 175, maxHeight: 175 }}
+                      columns={columns}
+                      dataSource={[...getNotSelectedKpis()]}
+                      pagination={false}
+                      rowClassName={(record, index) =>
+                        selectedKpi?.value === record.value
+                          ? "ant-table-row-selected"
+                          : ""
+                      }
+                      onRow={(record, index) => {
+                        return {
+                          onClick: (e) => {
+                            setSelectedKpiApi(record);
+                          },
+                        };
+                      }}
+                    />
+                  </dic>
+                  <dic class="col-4 text-center">
+                    <Space direction="vertical" style={{ display: "flex" }}>
+                      <Button type="primary" onClick={addKpiToSelected}>
+                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                      </Button>
+                      <Button type="primary" onClick={removeSelectedKpi}>
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                      </Button>
+                    </Space>
+                  </dic>
+                  <dic class="col-4">
+                    <Table
+                      size="small"
+                      bordered
+                      scroll={{ y: 175 }}
+                      style={{ height: 175, maxHeight: 175 }}
+                      columns={selectedTableColumns}
+                      dataSource={[...datasource.selectedKpis]}
+                      pagination={false}
+                      rowClassName={(record, index) =>
+                        selectedKpiForRemove?.value === record.value
+                          ? "ant-table-row-selected"
+                          : ""
+                      }
+                      onRow={(record, index) => {
+                        return {
+                          onClick: (e) => {
+                            setSelectedKpiApiForRemove(record);
+                          },
+                        };
+                      }}
+                    />
+                  </dic>
+                </div>
+              </>
             );
           }
         })()}

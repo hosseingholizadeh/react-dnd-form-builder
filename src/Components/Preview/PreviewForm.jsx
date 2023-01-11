@@ -13,7 +13,7 @@ export default function PreviewForm({ t, elements, visible, close }) {
       open={visible}
       onCancel={() => close()}
       cancelText={t("cancel")}
-      width={1300}
+      width={1450}
       footer={[
         <Button key="submit" type="primary" onClick={() => close()}>
           {t("close")}
