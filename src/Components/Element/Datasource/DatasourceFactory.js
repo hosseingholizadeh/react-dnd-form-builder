@@ -7,7 +7,7 @@ export class DatasourceFactory {
   static CreateDatasource(elementType, onChangeDataSource) {
     switch (elementType.value) {
       case ElementType.dropdown.value:
-      case ElementType.multiselect.value:
+        //case ElementType.multiselect.value:
         return new KeyValueDatasource(
           DataLoadType.fromserver,
           onChangeDataSource

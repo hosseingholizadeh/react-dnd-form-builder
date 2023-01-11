@@ -1,4 +1,4 @@
-import { Button, Input, Select, Space, Tooltip } from "antd";
+import { Button, Space, Table } from "antd";
 import React, { useEffect, useState } from "react";
 import { ApiSelectorInput } from "./ApiSelectInputs";
 import DataApiSelectModal from "./DataApiSelectModal";
@@ -7,6 +7,8 @@ import DataApiSelectModal from "./DataApiSelectModal";
 export function FromServerMultiKpiDataOptions({ t, datasource }) {
   const [apiSelectModalVisible, setApiSelectModalVisible] = useState(false);
   const [kpis, setKpis] = useState([]);
+  const [selectedKpi, setSelectedKpiApi] = useState(null);
+  const [selectedKpiForRemove, setSelectedKpiApiForRemove] = useState(null);
 
   const openSelectApiModal = (e) => {
     setApiSelectModalVisible(true);
@@ -18,8 +20,7 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
 
   const removeSelectedApi = (e) => {
     setSelectedApi(null);
-    setSelectedLabelMapKpi(null);
-    setSelectedValueMapKpi(null);
+    setKpis([]);
   };
 
   const setSelectedApi = (api) => {
@@ -36,13 +37,37 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
     );
   };
 
-  const setSelectedLabelMapKpi = (value) => {
-    datasource.setLabelField(value);
+  const addKpiToSelected = () => {
+    if (selectedKpi) {
+      datasource.addKpi(selectedKpi);
+    }
   };
 
-  const setSelectedValueMapKpi = (value) => {
-    datasource.setValueField(value);
+  const removeSelectedKpi = () => {
+    if (selectedKpiForRemove) {
+      datasource.removeKpi(selectedKpiForRemove);
+    }
   };
+
+  const getNotSelectedKpis = () => {
+    return datasource.returnNotSelectedKpis(kpis);
+  };
+
+  const columns = [
+    {
+      dataIndex: "label",
+      title: t("kpis"),
+      width: 100,
+    },
+  ];
+
+  const selectedTableColumns = [
+    {
+      dataIndex: "label",
+      width: 100,
+      title: t("selected Kpis"),
+    },
+  ];
 
   useEffect(() => {
     if (datasource.api) {
@@ -59,7 +84,6 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
     <div class="row">
       <div class="col-12">
         <div class="inputs">
-          <span class="title">{t("style options")}</span>
           <Space direction="vertical" style={{ display: "flex" }}>
             <div class="form-group">
               <ApiSelectorInput
@@ -75,34 +99,72 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
                 t={t}
               />
             </div>
-            <div class="form-group">
-              <label style={{ marginRight: 5, marginLeft: 5 }}>
-                {t("label")}
-              </label>
-              <Select
-                disabled={
-                  datasource.api === null || datasource.api === undefined
-                }
-                options={kpis}
-                value={datasource.labelField}
-                onChange={setSelectedLabelMapKpi}
-                style={{ width: 150 }}
-              />
-              <label style={{ marginRight: 5, marginLeft: 5 }}>
-                {t("value")}
-              </label>
-              <Select
-                disabled={
-                  datasource.api === null || datasource.api === undefined
-                }
-                options={kpis}
-                value={datasource.valueField}
-                onChange={setSelectedValueMapKpi}
-                style={{ width: 150 }}
-              />
-            </div>
           </Space>
         </div>
+        {(() => {
+          if (datasource.api) {
+            return (
+              <div class="inputs">
+                <dic class="col-4">
+                  <Table
+                    size="small"
+                    bordered
+                    scroll={{ y: 175 }}
+                    style={{ height: 175, maxHeight: 175 }}
+                    columns={columns}
+                    dataSource={[...getNotSelectedKpis()]}
+                    pagination={false}
+                    rowClassName={(record, index) =>
+                      selectedKpi?.value === record.value
+                        ? "ant-table-row-selected"
+                        : ""
+                    }
+                    onRow={(record, index) => {
+                      return {
+                        onClick: (e) => {
+                          setSelectedKpiApi(record);
+                        },
+                      };
+                    }}
+                  />
+                </dic>
+                <dic class="col-4 text-center">
+                  <Space direction="vertical" style={{ display: "flex" }}>
+                    <Button type="primary" onClick={addKpiToSelected}>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </Button>
+                    <Button type="primary" onClick={removeSelectedKpi}>
+                      <ion-icon name="arrow-back-outline"></ion-icon>
+                    </Button>
+                  </Space>
+                </dic>
+                <dic class="col-4">
+                  <Table
+                    size="small"
+                    bordered
+                    scroll={{ y: 175 }}
+                    style={{ height: 175, maxHeight: 175 }}
+                    columns={selectedTableColumns}
+                    dataSource={[...datasource.selectedKpis]}
+                    pagination={false}
+                    rowClassName={(record, index) =>
+                      selectedKpiForRemove?.value === record.value
+                        ? "ant-table-row-selected"
+                        : ""
+                    }
+                    onRow={(record, index) => {
+                      return {
+                        onClick: (e) => {
+                          setSelectedKpiApiForRemove(record);
+                        },
+                      };
+                    }}
+                  />
+                </dic>
+              </div>
+            );
+          }
+        })()}
       </div>
     </div>
   );

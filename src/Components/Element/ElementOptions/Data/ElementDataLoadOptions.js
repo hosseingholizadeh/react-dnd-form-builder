@@ -2,8 +2,6 @@ import { Radio } from "antd";
 import React from "react";
 import { DataLoadType } from "../../Datasource/DataLoadType";
 import { DatasourceFactory } from "../../Datasource/DatasourceFactory";
-import { FromServerDatasourceOptions } from "./FromServerDatasourceOptions";
-import { ManualDatasourceOptions } from "./ManualDatasourceOptions";
 
 export default function ElementDataLoadOptions({
   t,
@@ -46,9 +44,9 @@ export default function ElementDataLoadOptions({
 
       {(() => {
         if (datasource.loadType === DataLoadType.fromserver) {
-          return <FromServerDatasourceOptions t={t} datasource={datasource} />;
+          return elementType.datasource.fromserver(t, datasource);
         } else {
-          return <ManualDatasourceOptions t={t} datasource={datasource} />;
+          return elementType.datasource.manual(t, datasource);
         }
       })()}
     </>

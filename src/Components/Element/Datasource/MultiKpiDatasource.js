@@ -2,9 +2,7 @@ export class MultiKpiDatasource {
   loadType;
   api;
   data = [];
-  labelField;
-  valueField;
-
+  selectedKpis = [];
   updateState;
 
   constructor(loadType, updateState) {
@@ -19,12 +17,29 @@ export class MultiKpiDatasource {
 
   setApi(api) {
     this.api = api;
+    this.selectedKpis = [];
     this.updateState();
   }
 
-  setLabelField(labelField) {
-    this.labelField = labelField;
-    this.updateState();
+  returnNotSelectedKpis(kpis) {
+    return kpis.filter(
+      (kpi) => this.selectedKpis.findIndex((k) => k.value === kpi.value) === -1
+    );
+  }
+
+  addKpi(kpi) {
+    if (this.selectedKpis.findIndex((k) => k.value === kpi.value) === -1) {
+      this.selectedKpis.push(kpi);
+      this.updateState();
+    }
+  }
+
+  removeKpi(kpi) {
+    let index = this.selectedKpis.findIndex((k) => k.value === kpi.value);
+    if (index !== -1) {
+      this.selectedKpis.splice(index, 1);
+      this.updateState();
+    }
   }
 
   setValueField(valueField) {

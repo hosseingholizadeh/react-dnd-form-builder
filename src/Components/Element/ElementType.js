@@ -1,4 +1,7 @@
 import React from "react";
+import { FromServerDatasourceOptions } from "./ElementOptions/Data/FromServerDatasourceOptions";
+import { FromServerMultiKpiDataOptions } from "./ElementOptions/Data/FromServerMultiKpiDataOptions";
+import { ManualDatasourceOptions } from "./ElementOptions/Data/ManualDatasourceOptions";
 
 import { ElementOptions } from "./ElementOptions/index";
 import { RenderComponents } from "./Elements/index";
@@ -12,7 +15,6 @@ export const RenderType = {
 export const ElementType = {
   button: {
     value: 1,
-    hasDataSource: false,
     icon: "tablet-landscape-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.ButtonOptions
@@ -31,7 +33,6 @@ export const ElementType = {
   },
   input: {
     value: 2,
-    hasDataSource: false,
     icon: "create-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.InputOptions
@@ -50,7 +51,14 @@ export const ElementType = {
   },
   dropdown: {
     value: 3,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerDatasourceOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "list-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.DropdownOptions
@@ -69,7 +77,7 @@ export const ElementType = {
   },
   progress: {
     value: 4,
-    hasDataSource: false,
+
     icon: "reload-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.ProgressBarOptions
@@ -88,7 +96,14 @@ export const ElementType = {
   },
   steps: {
     value: 5,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerDatasourceOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "analytics-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.StepsOptions
@@ -107,7 +122,14 @@ export const ElementType = {
   },
   radio: {
     value: 6,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerDatasourceOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "radio-button-on-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.RadioOptions
@@ -126,7 +148,14 @@ export const ElementType = {
   },
   checkbox: {
     value: 7,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerDatasourceOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "checkbox-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.CheckboxOptions
@@ -145,7 +174,14 @@ export const ElementType = {
   },
   tab: {
     value: 8,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerDatasourceOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "apps-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.TabsOptions
@@ -164,7 +200,6 @@ export const ElementType = {
   },
   switch: {
     value: 9,
-    hasDataSource: false,
     icon: "toggle-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.SwitchOptions
@@ -183,7 +218,6 @@ export const ElementType = {
   },
   image: {
     value: 10,
-    hasDataSource: false,
     icon: "image-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.ImageOptions
@@ -202,7 +236,6 @@ export const ElementType = {
   },
   rate: {
     value: 11,
-    hasDataSource: false,
     icon: "star-half-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.RateOptions
@@ -221,7 +254,6 @@ export const ElementType = {
   },
   carousel: {
     value: 12,
-    hasDataSource: false,
     icon: "caret-forward-circle-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.CarouselOptions
@@ -240,7 +272,6 @@ export const ElementType = {
   },
   divider: {
     value: 13,
-    hasDataSource: false,
     icon: "remove-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.DividerOptions
@@ -259,7 +290,14 @@ export const ElementType = {
   },
   table: {
     value: 14,
-    hasDataSource: true,
+    datasource: {
+      fromserver: (t, datasource) => (
+        <FromServerMultiKpiDataOptions t={t} datasource={datasource} />
+      ),
+      manual: (t, datasource) => (
+        <ManualDatasourceOptions t={t} datasource={datasource} />
+      ),
+    },
     icon: "grid-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.TableOptions
@@ -278,7 +316,6 @@ export const ElementType = {
   },
   datepicker: {
     value: 15,
-    hasDataSource: false,
     icon: "today-outline",
     optionsComponent: (t, options, setOptions) => (
       <ElementOptions.DatePickerOptions
@@ -297,7 +334,6 @@ export const ElementType = {
   },
   // multiselect: {
   //   value: 16,
-  //   hasDataSource: true,
   //   icon: "list-outline",
   //   optionsComponent: (t, options, setOptions) => (
   //     <ElementOptions.DropdownOptions

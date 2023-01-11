@@ -59,7 +59,6 @@ export function FromServerDatasourceOptions({ t, datasource }) {
     <div class="row">
       <div class="col-12">
         <div class="inputs">
-          <span class="title">{t("style options")}</span>
           <Space direction="vertical" style={{ display: "flex" }}>
             <div class="form-group">
               <ApiSelectorInput

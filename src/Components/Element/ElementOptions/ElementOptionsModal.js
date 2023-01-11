@@ -20,7 +20,7 @@ export default function ElementOptionsModal({
     },
   ];
 
-  if (elementType.hasDataSource === true)
+  if (elementType.datasource)
     tabs.push({
       label: t("datasource"),
       key: "datasource",
