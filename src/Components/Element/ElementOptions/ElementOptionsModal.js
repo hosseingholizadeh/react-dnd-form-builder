@@ -27,6 +27,7 @@ export default function ElementOptionsModal({
       children: (
         <ElementDataLoadOptions
           t={t}
+          elementType={elementType}
           datasource={options.datasource}
           setOptions={setOptions}
         />

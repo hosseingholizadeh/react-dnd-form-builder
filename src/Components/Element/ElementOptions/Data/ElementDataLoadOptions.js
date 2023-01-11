@@ -1,12 +1,16 @@
 import { Radio } from "antd";
 import React from "react";
 import { DataLoadType } from "../../Datasource/DataLoadType";
-import { KeyValueDatasource } from "../../Datasource/KeyValueDatasource";
+import { DatasourceFactory } from "../../Datasource/DatasourceFactory";
 import { FromServerDatasourceOptions } from "./FromServerDatasourceOptions";
 import { ManualDatasourceOptions } from "./ManualDatasourceOptions";
 
-export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
-  console.log(datasource);
+export default function ElementDataLoadOptions({
+  t,
+  elementType,
+  datasource,
+  setOptions,
+}) {
   const onChangeDataSource = () => {
     setOptions((prevOptions) => ({
       ...prevOptions,
@@ -15,8 +19,8 @@ export default function ElementDataLoadOptions({ t, datasource, setOptions }) {
   };
 
   if (!datasource) {
-    datasource = new KeyValueDatasource(
-      DataLoadType.fromserver,
+    datasource = DatasourceFactory.CreateDatasource(
+      elementType,
       onChangeDataSource
     );
   }

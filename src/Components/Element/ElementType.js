@@ -1,7 +1,7 @@
 import React from "react";
 
-import { RenderComponents } from "./Elements/index";
 import { ElementOptions } from "./ElementOptions/index";
+import { RenderComponents } from "./Elements/index";
 
 export const RenderType = {
   dragdrop: 1,
@@ -295,4 +295,23 @@ export const ElementType = {
       />
     ),
   },
+  // multiselect: {
+  //   value: 16,
+  //   hasDataSource: true,
+  //   icon: "list-outline",
+  //   optionsComponent: (t, options, setOptions) => (
+  //     <ElementOptions.DropdownOptions
+  //       t={t}
+  //       options={options}
+  //       setOptions={setOptions}
+  //     />
+  //   ),
+  //   render: (t, element, renderType) => (
+  //     <RenderComponents.RenderDropDown
+  //       t={t}
+  //       element={element}
+  //       renderType={renderType}
+  //     />
+  //   ),
+  // },
 };

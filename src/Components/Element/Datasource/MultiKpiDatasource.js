@@ -1,4 +1,4 @@
-export class KeyValueDatasource {
+export class MultiKpiDatasource {
   loadType;
   api;
   data = [];
