@@ -1,6 +1,6 @@
 import { Button, Space, Table } from "antd";
 import React, { useEffect, useState } from "react";
-import { ApiSelectorInput } from "./ApiSelectInputs";
+import { ApiSelectorInput, KpiSelect } from "./ApiSelectInputs";
 import DataApiSelectModal from "./DataApiSelectModal";
 
 // this will be user for the {label, value} lists => ex: DropDownList
@@ -53,6 +53,10 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
     return datasource.returnNotSelectedKpis(kpis);
   };
 
+  const selectPk = (value) => {
+    datasource.setPk(value);
+  };
+
   const columns = [
     {
       dataIndex: "label",
@@ -84,7 +88,7 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
     <div class="row">
       <div class="col-12">
         <div class="inputs">
-          <Space direction="vertical" style={{ display: "flex" }}>
+          <Space>
             <div class="form-group">
               <ApiSelectorInput
                 t={t}
@@ -97,6 +101,15 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
                 setSelectedApi={setSelectedApi}
                 close={closeSelectApiModal}
                 t={t}
+              />
+            </div>
+            <div class="form-group">
+              <label>{t("pk")}</label>
+              <KpiSelect
+                api={datasource.api}
+                kpis={kpis}
+                value={datasource.pk}
+                onChange={selectPk}
               />
             </div>
           </Space>

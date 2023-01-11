@@ -3,6 +3,7 @@ export class MultiKpiDatasource {
   api;
   data = [];
   selectedKpis = [];
+  pk;
   updateState;
 
   constructor(loadType, updateState) {
@@ -67,5 +68,9 @@ export class MultiKpiDatasource {
       this.data.splice(index, 1);
       this.updateState();
     }
+  }
+
+  setPk(pk) {
+    this.pk = pk;
   }
 }
