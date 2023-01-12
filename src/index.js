@@ -11,7 +11,7 @@ const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("Failed to find the root element");
 const root = ReactDOM.createRoot(rootElement);
 
-let cultureClass = culture.isRtl() ? "fb-rtl" : "fb-rtl";
+let cultureClass = culture.isRtl() ? "fb-rtl" : "fb-ltr";
 document.body.classList.add(cultureClass);
 
 root.render(

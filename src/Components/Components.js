@@ -6,7 +6,11 @@ import { Table } from "antd";
 export default function Components({ t, addElement }) {
   const columns = [
     {
-      title: t("elements"),
+      title: () => (
+        <span style={{ fontSize: 16, fontWeight: 600, color: "rgb(6 0 127)" }}>
+          <ion-icon name="grid-outline"></ion-icon> {t("elements")}
+        </span>
+      ),
       render: (_, key) => (
         <Element
           t={t}

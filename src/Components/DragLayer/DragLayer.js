@@ -13,6 +13,7 @@ function getDragLayerStyles(initialOffset, currentOffset) {
   let { x, y } = currentOffset;
 
   const transform = `translate(${x}px, ${y}px)`;
+
   return {
     transform,
     WebkitTransform: transform,
@@ -52,7 +53,7 @@ export function DragLayer({ t }) {
   }
 
   return (
-    <div className="draglayer">
+    <div className="draglayer" style={{ direction: "ltr" }}>
       <div style={getDragLayerStyles(initialOffset, currentOffset)}>
         {renderItem()}
       </div>

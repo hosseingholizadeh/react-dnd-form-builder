@@ -147,11 +147,18 @@ div.inputs label {
 .draglayer .ant-input {
   width: 150px;
 }
+
+.fb-ltr .draglayer {
+  left: 0;
+}
+.fb-rtl .draglayer {
+  right: 0;
+}
+
 .draglayer {
   position: fixed;
   pointer-events: none;
   z-index: 100;
-  left: 0;
   top: 0;
   width: 100%;
   height: 100%;
