@@ -2,6 +2,7 @@ import React from "react";
 import { useDragLayer } from "react-dnd";
 import { BOX } from "../types";
 import { ElementType, RenderType } from "../Element/ElementType";
+import culture from "../../lib/js/culture";
 
 function getDragLayerStyles(initialOffset, currentOffset) {
   if (!initialOffset || !currentOffset) {
@@ -18,6 +19,7 @@ function getDragLayerStyles(initialOffset, currentOffset) {
     transform,
     WebkitTransform: transform,
     width: "fit-content",
+    direction: culture.isRtl() ? "rtl" : "ltr",
   };
 }
 
