@@ -1,14 +1,14 @@
 import { Button, Modal } from "antd";
 import RenderElementPreview from "./RenderElementPreview";
 
-export default function PreviewForm({ t, elements, visible, close }) {
+export default function PreviewForm({ t, form, elements, visible, close }) {
   return (
     <Modal
       className="preview-modal"
       destroyOnClose={true}
       maskClosable={false}
       zIndex={999}
-      title={t("preview")}
+      title={t("preview") + " " + form.title}
       centered
       open={visible}
       onCancel={() => close()}

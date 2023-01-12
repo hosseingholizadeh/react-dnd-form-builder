@@ -102,6 +102,7 @@ export default function FormBuilder() {
               <PreviewForm
                 t={t}
                 close={closePreview}
+                form={form}
                 elements={elements}
                 visible={previewVisible}
               />
