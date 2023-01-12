@@ -1,3 +1,11 @@
+body.fb-rtl {
+  direction: rtl;
+}
+
+body.fb-ltr {
+  direction: ltr;
+}
+
 .fb-container {
   width: 100%;
   position: absolute;

@@ -1,5 +1,6 @@
 import { Button, Modal, Tabs } from "antd";
 import { useState } from "react";
+import culture from "../../../lib/js/culture";
 import { ElementType } from "../ElementType";
 import ElementDataLoadOptions from "./Data/ElementDataLoadOptions";
 
@@ -14,7 +15,7 @@ export default function ElementOptionsModal({
   let elementType = ElementType[element.name];
   let tabs = [
     {
-      label: t("general setting"),
+      label: t("generalSetting"),
       key: "general",
       children: elementType.optionsComponent(t, options, setOptions),
     },
@@ -60,7 +61,11 @@ export default function ElementOptionsModal({
         </Button>,
       ]}
     >
-      <Tabs defaultActiveKey="general" items={tabs} />
+      <Tabs
+        direction={culture.isRtl(t.lang) ? "rtl" : "ltr"}
+        defaultActiveKey="general"
+        items={tabs}
+      />
     </Modal>
   );
 }

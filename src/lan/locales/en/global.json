@@ -33,5 +33,22 @@
   "table": "Table",
   "checkbox": "Checkbox",
   "elements": "Elements",
-  "selectOne": "Select One"
+  "selectOne": "Select One",
+  "formSetting": "Form Setting",
+  "styleOptions": "Style Options",
+  "title": "Title",
+  "api": "Api",
+  "formType": "Form Type",
+  "submitForm": "Submit Form",
+  "managementForm": "Management Form",
+  "isPageable": "Is Pageable",
+  "label": "label",
+  "value": "value",
+  "selectedKpis": "Selected Kpis",
+  "kpis": "kpis",
+  "pk": "Key Field",
+  "generalSetting": "General Setting",
+  "datasource": "Datasource",
+  "fromserver": "From Server",
+  "manual": "Manual"
 }

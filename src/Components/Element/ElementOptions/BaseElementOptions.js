@@ -15,7 +15,7 @@ export default function BaseElementOptions({ t, style, setOptions }) {
           if (style) {
             return (
               <div class="inputs">
-                <span class="title">{t("style options")}</span>
+                <span class="title">{t("styleOptions")}</span>
                 <Space>
                   <div class="form-group">
                     <label>{t("width")}</label>

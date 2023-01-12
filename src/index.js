@@ -5,10 +5,14 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { DndProvider } from "react-dnd";
+import culture from "./lib/js/culture";
 
 const rootElement = document.getElementById("root");
-if (!rootElement) throw new Error('Failed to find the root element');
+if (!rootElement) throw new Error("Failed to find the root element");
 const root = ReactDOM.createRoot(rootElement);
+
+let cultureClass = culture.isRtl() ? "fb-rtl" : "fb-rtl";
+document.body.classList.add(cultureClass);
 
 root.render(
   <DndProvider backend={HTML5Backend}>

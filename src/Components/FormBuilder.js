@@ -13,6 +13,7 @@ export default function FormBuilder() {
   let lan = culture.getLanguage();
   let t = i18next.getFixedT(lan);
 
+  const [form, setFormData] = useState({});
   const [elements, setElements] = useState({});
   const [cache, setElementOnCache] = useState([]);
   const [previewVisible, setPreviewVisible] = useState(false);
@@ -71,7 +72,7 @@ export default function FormBuilder() {
   ApiStore.LoadApis();
 
   return (
-    <div class="card fb-container">
+    <div className={"card fb-container"}>
       <div class="row">
         <div class="col-2">
           <Components t={t} addElement={addElement} />
@@ -79,7 +80,12 @@ export default function FormBuilder() {
         <div class="col-10">
           <div class="row">
             <div class="col-12">
-              <Toolbar t={t} openPreview={openPreview} />
+              <Toolbar
+                t={t}
+                openPreview={openPreview}
+                form={form}
+                setFormData={setFormData}
+              />
             </div>
             <div class="col-12">
               <DragLayerContainer

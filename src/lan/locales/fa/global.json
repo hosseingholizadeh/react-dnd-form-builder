@@ -31,5 +31,22 @@
   "preview": "پیش نمایش",
   "selectApi": "انتخاب Api",
   "elements": "المان ها",
-  "selectOne": "انتخاب کنید"
+  "selectOne": "انتخاب کنید",
+  "formSetting": "تنظیمات فرم",
+  "styleOptions": "تنظیمات استایل",
+  "title": "عنوان",
+  "api": "Api",
+  "formType": "نوع فرم",
+  "submitForm": "فرم ثبت داده",
+  "managementForm": "فرم مدیریت داده",
+  "isPageable": "صفحه بندی دارد",
+  "label": "فیلد نمایش",
+  "value": "فیلد مقدار",
+  "selectedKpis": "فیلدهای انتخاب شده",
+  "kpis": "فیلدها",
+  "pk": "فیلد شناسه",
+  "generalSetting": "تنظیمات عمومی",
+  "datasource": "تنظیمات داده",
+  "fromserver": "دریافت داده از سرور",
+  "manual": "وارد کردن داده دستی"
 }

@@ -73,7 +73,7 @@ export function FromServerMultiKpiDataOptions({ t, datasource }) {
     {
       dataIndex: "label",
       width: 100,
-      title: t("selected Kpis"),
+      title: t("selectedKpis"),
     },
   ];
 
