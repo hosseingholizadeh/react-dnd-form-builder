@@ -184,3 +184,38 @@ div.inputs label {
 .preview-modal .form-preview .preview-element select {
   width: 150px;
 }
+.fb-rtl .api-rm-btn {
+  height: 31px;
+  border-radius: 0px;
+}
+
+.fb-rtl .api-input {
+  width: 230px;
+  height: 31px;
+  border-top-right-radius: 7px !important;
+  border-bottom-right-radius: 7px !important;
+}
+
+.fb-rtl .api-select-btn {
+  height: 31px;
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.fb-ltr .api-rm-btn {
+  height: 31px;
+  border-radius: 0px;
+}
+
+.fb-ltr .api-input {
+  width: 230px;
+  height: 31px;
+  border-top-left-radius: 7px !important;
+  border-bottom-left-radius: 7px !important;
+}
+
+.fb-ltr .api-select-btn {
+  height: 31px;
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}

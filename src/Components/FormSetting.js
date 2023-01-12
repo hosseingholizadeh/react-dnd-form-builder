@@ -1,4 +1,4 @@
-import { Drawer, Radio, Space } from "antd";
+import { Drawer, Input, Radio, Space } from "antd";
 import { useState } from "react";
 import { ApiSelectorInput } from "./Element/ElementOptions/Data/ApiSelectInputs";
 import DataApiSelectModal from "./Element/ElementOptions/Data/DataApiSelectModal";
@@ -7,7 +7,9 @@ import culture from "../lib/js/culture";
 export default function FormSetting({ t, visible, close, form, setFormData }) {
   return (
     <Drawer
-      title="Basic Drawer"
+      width={650}
+      zIndex={5}
+      title={t("formSetting")}
       placement={culture.isRtl(t.lang) ? "left" : "right"}
       onClose={close}
       open={visible}
@@ -42,9 +44,8 @@ function GeneralFormSetting(t, form, setFormData) {
         <div class="inputs">
           <Space>
             <div class="form-group">
-              <label>{t("title")}</label>
-              <input
-                class="form-control"
+              <Input
+                placeholder={t("title")}
                 defaultValue={form.title}
                 onChange={setTitle}
               />
@@ -84,24 +85,14 @@ function ApiSetting(t, form, setFormData) {
   };
 
   const setSelectedApi = (api) => {
-    form.setApi(api);
-    setKpis(
-      form.api
-        ? [
-            ...form.api.kpis.map((k) => ({
-              value: k,
-              label: k,
-            })),
-          ]
-        : []
-    );
+    setFormData({ ...form, api: api });
+    setKpis(api ? [...api.kpis] : []);
   };
 
   return (
     <div class="row">
       <div class="col-12">
         <div class="inputs">
-          <span class="title">{t("styleOptions")}</span>
           <Space direction="vertical" style={{ display: "flex" }}>
             <div class="form-group">
               <ApiSelectorInput

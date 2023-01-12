@@ -9,34 +9,16 @@ export const ApiSelectorInput = ({
   <Input.Group compact>
     <label style={{ marginRight: 10, marginLeft: 10 }}>{t("api")}</label>
     <Input
-      style={{
-        width: 230,
-        height: 31,
-        borderTopLeftRadius: 7,
-        borderBottomLeftRadius: 7,
-      }}
+      className="api-input"
       readOnly={true}
       placeholder={t("selectOne")}
       value={api?.title}
     />
     <Tooltip>
-      <Button
-        onClick={removeSelectedApi}
-        style={{
-          height: 31,
-          borderRadius: 0,
-        }}
-      >
+      <Button className="api-rm-btn" onClick={removeSelectedApi}>
         <ion-icon name="close-outline"></ion-icon>
       </Button>
-      <Button
-        onClick={openSelectApiModal}
-        style={{
-          height: 31,
-          borderTopLeftRadius: 0,
-          borderBottomLeftRadius: 0,
-        }}
-      >
+      <Button className="api-select-btn" onClick={openSelectApiModal}>
         {t("select")}
       </Button>
     </Tooltip>
