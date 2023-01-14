@@ -1,8 +1,8 @@
 import { Drawer, Input, Radio, Space } from "antd";
 import { useState } from "react";
+import culture from "../lib/js/culture";
 import { ApiSelectorInput } from "./Element/ElementOptions/Data/ApiSelectInputs";
 import DataApiSelectModal from "./Element/ElementOptions/Data/DataApiSelectModal";
-import culture from "../lib/js/culture";
 
 export default function FormSetting({ t, visible, close, form, setFormData }) {
   return (
@@ -70,7 +70,6 @@ function GeneralFormSetting(t, form, setFormData) {
 
 function ApiSetting(t, form, setFormData) {
   const [apiSelectModalVisible, setApiSelectModalVisible] = useState(false);
-  const [kpis, setKpis] = useState([]);
 
   const openSelectApiModal = (e) => {
     setApiSelectModalVisible(true);
@@ -85,8 +84,18 @@ function ApiSetting(t, form, setFormData) {
   };
 
   const setSelectedApi = (api) => {
-    setFormData({ ...form, api: api });
-    setKpis(api ? [...api.kpis] : []);
+    setFormData({
+      ...form,
+      api: api,
+      kpis: api
+        ? [
+            ...api.kpis.map((kpi) => ({
+              name: kpi,
+              elementId: null,
+            })),
+          ]
+        : [],
+    });
   };
 
   return (

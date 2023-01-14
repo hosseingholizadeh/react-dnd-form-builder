@@ -50,5 +50,10 @@
   "generalSetting": "General Setting",
   "datasource": "Datasource",
   "fromserver": "From Server",
-  "manual": "Manual"
+  "manual": "Manual",
+  "kpiConnectionOptions": "Connect To Kpi",
+  "backgroundColor": "Background Color",
+  "color": "Color",
+  "width": "Width",
+  "height": "Height"
 }

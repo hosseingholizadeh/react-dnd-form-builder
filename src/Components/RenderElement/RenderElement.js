@@ -27,6 +27,8 @@ export default function RenderElement({
   updateElementOptions,
   setSelectedItem,
   isSelected,
+  form,
+  setFormData,
 }) {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
 
@@ -65,6 +67,8 @@ export default function RenderElement({
         visible={optionsModalVisible}
         close={closeOptionsModal}
         saveOptions={saveElementOptions}
+        form={form}
+        setFormData={setFormData}
       />
       {elementType ? (
         elementType.render(t, element, RenderType.dragdrop)

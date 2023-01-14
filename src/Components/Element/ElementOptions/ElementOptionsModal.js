@@ -10,6 +10,8 @@ export default function ElementOptionsModal({
   visible,
   close,
   saveOptions,
+  form,
+  setFormData,
 }) {
   const [options, setOptions] = useState(element.options);
   let elementType = ElementType[element.name];
@@ -17,7 +19,14 @@ export default function ElementOptionsModal({
     {
       label: t("generalSetting"),
       key: "general",
-      children: elementType.optionsComponent(t, options, setOptions),
+      children: elementType.optionsComponent(
+        t,
+        form,
+        setFormData,
+        element,
+        options,
+        setOptions
+      ),
     },
   ];
 

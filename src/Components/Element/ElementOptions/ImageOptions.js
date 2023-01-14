@@ -1,16 +1,24 @@
 import BaseElementOptions from "./BaseElementOptions";
 
-export default function ImageOptions({ t, options, setOptions }) {
+export default function ImageOptions({
+  t,
+  element,
+  form,
+  setFormData,
+  options,
+  setOptions,
+}) {
   return (
     <div>
-      <BaseElementOptions t={t} style={options.style} setOptions={setOptions} />
-      <div class="row">
-        <div class="col-12">
-          <div class="inputs">
-            <span class="title">{t("extra image options")}</span>
-          </div>
-        </div>
-      </div>
+      <BaseElementOptions
+        t={t}
+        form={form}
+        element={element}
+        style={options.style}
+        general={options.general}
+        setFormData={setFormData}
+        setOptions={setOptions}
+      />
     </div>
   );
 }

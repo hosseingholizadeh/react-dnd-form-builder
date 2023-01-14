@@ -16,10 +16,13 @@ export const ElementType = {
   button: {
     value: 1,
     icon: "tablet-landscape-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.ButtonOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -34,10 +37,13 @@ export const ElementType = {
   input: {
     value: 2,
     icon: "create-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.InputOptions
         t={t}
+        element={element}
         options={options}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -60,10 +66,13 @@ export const ElementType = {
       ),
     },
     icon: "list-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.DropdownOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -77,12 +86,14 @@ export const ElementType = {
   },
   progress: {
     value: 4,
-
     icon: "reload-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.ProgressBarOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -105,10 +116,13 @@ export const ElementType = {
       ),
     },
     icon: "analytics-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.StepsOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -131,10 +145,13 @@ export const ElementType = {
       ),
     },
     icon: "radio-button-on-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.RadioOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -157,10 +174,13 @@ export const ElementType = {
       ),
     },
     icon: "checkbox-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.CheckboxOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -183,10 +203,13 @@ export const ElementType = {
       ),
     },
     icon: "apps-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.TabsOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -201,10 +224,13 @@ export const ElementType = {
   switch: {
     value: 9,
     icon: "toggle-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.SwitchOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -219,10 +245,13 @@ export const ElementType = {
   image: {
     value: 10,
     icon: "image-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.ImageOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -237,10 +266,13 @@ export const ElementType = {
   rate: {
     value: 11,
     icon: "star-half-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.RateOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -255,10 +287,13 @@ export const ElementType = {
   carousel: {
     value: 12,
     icon: "caret-forward-circle-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.CarouselOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -273,10 +308,13 @@ export const ElementType = {
   divider: {
     value: 13,
     icon: "remove-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.DividerOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -299,10 +337,13 @@ export const ElementType = {
       ),
     },
     icon: "grid-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.TableOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -317,10 +358,13 @@ export const ElementType = {
   datepicker: {
     value: 15,
     icon: "today-outline",
-    optionsComponent: (t, options, setOptions) => (
+    optionsComponent: (t, form, setFormData, element, options, setOptions) => (
       <ElementOptions.DatePickerOptions
         t={t}
         options={options}
+        element={element}
+        form={form}
+        setFormData={setFormData}
         setOptions={setOptions}
       />
     ),
@@ -335,7 +379,7 @@ export const ElementType = {
   // multiselect: {
   //   value: 16,
   //   icon: "list-outline",
-  //   optionsComponent: (t, options, setOptions) => (
+  //   optionsComponent:  (t, form, setFormData, options, setOptions) => (
   //     <ElementOptions.DropdownOptions
   //       t={t}
   //       options={options}

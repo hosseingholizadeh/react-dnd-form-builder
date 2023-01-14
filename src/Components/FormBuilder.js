@@ -21,6 +21,19 @@ export default function FormBuilder() {
   const openPreview = () => setPreviewVisible(true);
   const closePreview = () => setPreviewVisible(false);
 
+  const resetFormKpiConnections = () => {
+    // remove all removed elements from the connection to api kpi
+    if (form.kpis) {
+      form.kpis
+        .filter((kpi) => kpi.elementId)
+        .forEach((kpi) => {
+          if (!elements[kpi.elementId]) kpi.elementId = undefined;
+        });
+    }
+
+    setFormData({ ...form });
+  };
+
   const addElement = (element) => {
     let finalElement = generateElement(element);
     setElements((prevElements) => ({
@@ -43,6 +56,7 @@ export default function FormBuilder() {
       setElementOnCache((prevElements) => [...prevElements, element]);
     }
     setElements({ ...elements });
+    resetFormKpiConnections();
   };
 
   const updateElementOptionData = (element, options) => {
@@ -72,7 +86,7 @@ export default function FormBuilder() {
   ApiStore.LoadApis();
 
   return (
-    <div className={"card fb-container"}>
+    <div class="card fb-container">
       <div class="row">
         <div class="col-2">
           <Components t={t} addElement={addElement} />
@@ -92,11 +106,12 @@ export default function FormBuilder() {
                 t={t}
                 elements={elements}
                 addElement={addElement}
-                setElements={setElements}
                 removeElement={removeElement}
                 updateElement={updateElement}
                 updateElementOptions={updateElementOptionData}
                 undoRemove={undoRemove}
+                form={form}
+                setFormData={setFormData}
               />
               <DragLayer t={t} />
               <PreviewForm

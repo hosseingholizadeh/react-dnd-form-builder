@@ -48,5 +48,10 @@
   "generalSetting": "تنظیمات عمومی",
   "datasource": "تنظیمات داده",
   "fromserver": "دریافت داده از سرور",
-  "manual": "وارد کردن داده دستی"
+  "manual": "وارد کردن داده دستی",
+  "kpiConnectionOptions": "اتصال به kpi",
+  "backgroundColor": "رنگ پس زمینه",
+  "color": "رنگ",
+  "width": "عرض",
+  "height": "ارتفاع"
 }

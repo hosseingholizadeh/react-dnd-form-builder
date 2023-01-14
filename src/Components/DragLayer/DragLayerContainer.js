@@ -11,6 +11,8 @@ export function DragLayerContainer({
   updateElement,
   updateElementOptions,
   undoRemove,
+  form,
+  setFormData,
 }) {
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -31,27 +33,9 @@ export function DragLayerContainer({
     accept: BOX,
     drop(item, monitor) {
       if (!elements[item.id]) {
-        // console.log(
-        //   "getInitialClientOffset: ",
-        //   monitor.getInitialClientOffset()
-        // );
-        // console.log(
-        //   "getDifferenceFromInitialOffset: ",
-        //   monitor.getDifferenceFromInitialOffset()
-        // );
-        // console.log(
-        //   "getInitialSourceClientOffset: ",
-        //   monitor.getInitialSourceClientOffset()
-        // );
-        // console.log("getSourceClientOffset: ", monitor.getSourceClientOffset());
-        // console.log("getClientOffset: ", monitor.getClientOffset());
-
         const delta = monitor.getClientOffset();
-        // console.log(delta);
         const left = Math.round(delta.x - 50);
         const top = Math.round(delta.y + 20);
-        // let left = Math.round(item.left + delta.x);
-        // let top = Math.round(item.top + delta.y);
         addBox(item, left, top);
       } else {
         const delta = monitor.getDifferenceFromInitialOffset();
@@ -101,13 +85,12 @@ export function DragLayerContainer({
         return (
           <RenderElement
             t={t}
-            id={key}
             element={elements[key]}
             isSelected={selectedItem && selectedItem.id === key}
             setSelectedItem={setSelectedItem}
-            removeElement={removeElement}
-            updateElement={updateElement}
             updateElementOptions={updateElementOptions}
+            form={form}
+            setFormData={setFormData}
           />
         );
       })}

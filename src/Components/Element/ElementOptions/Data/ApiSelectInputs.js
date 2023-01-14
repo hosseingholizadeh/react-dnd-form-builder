@@ -32,5 +32,6 @@ export const KpiSelect = ({ api, kpis, value, onChange }) => (
     value={value}
     onChange={onChange}
     style={{ width: 150 }}
+    allowClear={true}
   />
 );
