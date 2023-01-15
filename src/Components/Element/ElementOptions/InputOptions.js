@@ -5,7 +5,6 @@ export default function InputOptions({
   element,
   form,
   setFormData,
-  options,
   setOptions,
 }) {
   return (
@@ -14,8 +13,6 @@ export default function InputOptions({
         t={t}
         form={form}
         element={element}
-        style={options.style}
-        general={options.general}
         setFormData={setFormData}
         setOptions={setOptions}
       />

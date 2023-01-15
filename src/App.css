@@ -133,8 +133,9 @@ div.inputs label {
 .dragitem:hover {
   cursor: pointer;
 }
-.dragitem.selected {
-  border: 1px solid #999;
+
+.resizable.selected {
+  border: 1px dashed #999999d1;
 }
 
 .dragitem input,
@@ -218,4 +219,27 @@ div.inputs label {
   height: 31px;
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
+}
+
+.resizeButton {
+  background: rgba(1, 1, 1, 0.2);
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  position: absolute;
+  transform: translate(50%, 50%);
+  height: 15px;
+  width: 15px;
+}
+
+.fb-ltr .resizeButton {
+  cursor: se-resize !important;
+  bottom: 0;
+  right: 0;
+}
+
+.fb-rtl .resizeButton {
+  cursor: sw-resize !important;
+  bottom: -1px;
+  left: -15px;
 }

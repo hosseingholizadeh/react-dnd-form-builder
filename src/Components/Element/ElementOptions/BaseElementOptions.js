@@ -9,18 +9,17 @@ export default function BaseElementOptions({
   element,
   form,
   setFormData,
-  style,
-  general = {},
   setOptions,
 }) {
+  const { style = {}, general = {} } = element.options;
   const onChangeStyle = (option, value) => {
     let newStyle = { ...style, [option]: value };
-    setOptions((prevOptions) => ({ ...prevOptions, style: newStyle }));
+    setOptions({ ...element.options, style: newStyle });
   };
 
   const onChangeKpiConnection = (kpi) => {
     let newGeneral = { ...general, kpi: kpi };
-    setOptions((prevOptions) => ({ ...prevOptions, general: newGeneral }));
+    setOptions({ ...element.options, general: newGeneral });
     toggleSelectdKpiInForm(kpi);
   };
 
@@ -57,6 +56,7 @@ export default function BaseElementOptions({
       <div class="col-12">
         {(() => {
           if (style) {
+            console.log(style);
             return (
               <div class="inputs">
                 <span class="title">{t("styleOptions")}</span>
@@ -107,7 +107,6 @@ export default function BaseElementOptions({
           }
         })()}
         {(() => {
-          console.log(form);
           if (isValueControlElement()) {
             return (
               <div class="inputs">

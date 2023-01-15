@@ -5,7 +5,6 @@ export default function TableOptions({
   element,
   form,
   setFormData,
-  options,
   setOptions,
 }) {
   return (
@@ -14,8 +13,6 @@ export default function TableOptions({
         t={t}
         form={form}
         element={element}
-        style={options.style}
-        general={options.general}
         setFormData={setFormData}
         setOptions={setOptions}
       />

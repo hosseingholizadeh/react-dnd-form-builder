@@ -61,7 +61,8 @@ export default function FormBuilder() {
 
   const updateElementOptionData = (element, options) => {
     let id = element.id;
-    elements[id] = { ...element, options };
+    elements[id] = { ...element, options: { ...options } };
+    console.log("hossein", elements[id]);
     setElements({ ...elements });
   };
 

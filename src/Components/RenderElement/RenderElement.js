@@ -16,8 +16,8 @@ function getDraggableBoxStyles(left, top, isDragging) {
     // IE fallback: hide the real node using CSS when dragging
     // because IE will ignore our custom "empty image" drag preview.
     opacity: isDragging ? 0 : 1,
-    width: "fit-Content",
-    height: isDragging ? 0 : "",
+    width: "fit-content",
+    height: "fit-content",
   };
 }
 
@@ -31,8 +31,36 @@ export default function RenderElement({
   setFormData,
 }) {
   const [optionsModalVisible, setOptionsModalVisible] = useState(false);
-
   const { name, left, top, id, options } = element;
+
+  const dragItemId = "di_" + element.id;
+
+  const resizeHandler = (mouseDownEvent) => {
+    const startSize = options.style
+      ? {
+          x: options.style.width ?? 150,
+          y: options.style.height ?? 50,
+        }
+      : { x: 150, y: 50 };
+    const startPosition = { x: mouseDownEvent.pageX, y: mouseDownEvent.pageY };
+
+    function onMouseMove(mouseMoveEvent) {
+      changeElementSize(
+        startSize.x - startPosition.x + mouseMoveEvent.pageX,
+        startSize.y - startPosition.y + mouseMoveEvent.pageY
+      );
+    }
+
+    function onMouseUp() {
+      document.body.removeEventListener("mousemove", onMouseMove);
+      // uncomment the following line if not using `{ once: true }`
+      // document.body.removeEventListener("mouseup", onMouseUp);
+    }
+
+    document.body.addEventListener("mousemove", onMouseMove);
+    document.body.addEventListener("mouseup", onMouseUp, { once: true });
+  };
+
   const [{ isDragging }, drag, preview] = useDrag({
     type: BOX,
     item: { type: BOX, id, left, top, name, options },
@@ -51,30 +79,53 @@ export default function RenderElement({
     updateElementOptions(element, options);
   };
 
+  const changeElementSize = (x, y) => {
+    updateElementOptions(element, {
+      ...options,
+      style: { ...options.style, width: x, height: y },
+    });
+  };
+
   let elementType = ElementType[element.name];
   return (
     <div
-      aria-readonly={true}
-      className={"dragitem" + (isSelected ? " selected" : "")}
-      ref={drag}
-      onClick={() => (setSelectedItem ? setSelectedItem(element) : false)}
-      onDoubleClick={openOptionsModal}
+      className={"resizable" + (isSelected ? " selected" : "")}
       style={getDraggableBoxStyles(left, top, isDragging)}
     >
-      <ElementOptionsModal
-        t={t}
-        element={element}
-        visible={optionsModalVisible}
-        close={closeOptionsModal}
-        saveOptions={saveElementOptions}
-        form={form}
-        setFormData={setFormData}
-      />
-      {elementType ? (
-        elementType.render(t, element, RenderType.dragdrop)
-      ) : (
-        <span>{element.name}</span>
-      )}
+      {(() => {
+        if (isSelected) {
+          return (
+            <button
+              class="resizeButton"
+              type="button"
+              onMouseDown={resizeHandler}
+            ></button>
+          );
+        }
+      })()}
+      <div
+        id={dragItemId}
+        aria-readonly={true}
+        className="dragitem"
+        ref={drag}
+        onClick={() => (setSelectedItem ? setSelectedItem(element) : false)}
+        onDoubleClick={openOptionsModal}
+      >
+        <ElementOptionsModal
+          t={t}
+          element={element}
+          visible={optionsModalVisible}
+          close={closeOptionsModal}
+          saveOptions={saveElementOptions}
+          form={form}
+          setFormData={setFormData}
+        />
+        {elementType ? (
+          elementType.render(t, element, RenderType.dragdrop)
+        ) : (
+          <span>{element.name}</span>
+        )}
+      </div>
     </div>
   );
 }
