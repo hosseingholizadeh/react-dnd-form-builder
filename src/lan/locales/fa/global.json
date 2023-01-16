@@ -53,5 +53,9 @@
   "backgroundColor": "رنگ پس زمینه",
   "color": "رنگ",
   "width": "عرض",
-  "height": "ارتفاع"
+  "height": "ارتفاع",
+  "datepicker": "انتخاب تاریخ",
+  "selectDate": "تاریخ را انتخاب کنید",
+  "addForm": "افزودن فرم",
+  "editForme": "ویرایش فرم"
 }

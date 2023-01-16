@@ -1,20 +1,4 @@
 {
-  "name": "Name",
-  "cancel": "Cancel",
-  "save": "Save",
-  "add": "Add",
-  "edit": "Edit",
-  "delete": "Delete",
-  "ok": "OK",
-  "yes": "YES",
-  "no": "NO",
-  "enabled": "Enabled",
-  "disabled": "Disabled",
-  "apply_filter": " Apply Filter",
-  "Reset": "Reset",
-  "close": "Close",
-  "select": "Select",
-  "search": "Search",
   "optionModalTitle": "options {{name}}",
   "preview": "preview",
   "selectApi": "Select Api",
@@ -41,5 +25,9 @@
   "backgroundColor": "Background Color",
   "color": "Color",
   "width": "Width",
-  "height": "Height"
+  "height": "Height",
+  "datepicker": "DatePicker",
+  "selectDate": "Select Date",
+  "addForm": "Add Form",
+  "editForme": "EditForm"
 }

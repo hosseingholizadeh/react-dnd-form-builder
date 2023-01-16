@@ -55,5 +55,9 @@
   "backgroundColor": "Background Color",
   "color": "Color",
   "width": "Width",
-  "height": "Height"
+  "height": "Height",
+  "datepicker": "DatePicker",
+  "selectDate": "Select Date",
+  "addForm": "Add Form",
+  "editForme": "EditForm"
 }
