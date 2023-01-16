@@ -7,13 +7,11 @@ export default function ElementDataLoadOptions({
   t,
   elementType,
   datasource,
+  options,
   setOptions,
 }) {
   const onChangeDataSource = () => {
-    setOptions((prevOptions) => ({
-      ...prevOptions,
-      datasource: datasource,
-    }));
+    setOptions({ ...options, datasource: datasource });
   };
 
   if (!datasource) {

@@ -62,6 +62,7 @@ export default function ElementOptionsModal({
           elementType={elementType}
           datasource={element.options.datasource}
           setOptions={saveOptions}
+          options={element.options}
         />
       ),
     });
